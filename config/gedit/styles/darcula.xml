@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<style-scheme id="darcula" _name="Darcula" version="1.0">
+  <author>Malcak</author>
+  <_description>A dark color scheme for Gedit using IntelliJ IDEA colors</_description>
+
+  <!-- Colors -->
+  <color name="text-fg" value="#a9b7c6"/>
+  <color name="text-bg" value="#2b2b2b"/>
+  <color name="cursor-color" value="#bbbbbb"/>
+  <color name="comment-color" value="#606366"/>
+  <color name="number-color" value="#9876aa"/>
+  <color name="string-color" value="#6a8759"/>
+  <color name="boolean-color" value="#9876aa"/>
+  <color name="keyword-color" value="#cc7832"/>
+  <color name="error-color" value="#bc3f3c"/>
+  <color name="search-match-color" value="#000000"/>
+  <color name="selection-color" value="#214283"/>
+  <color name="current-line-color" value="#323232"/>
+  <color name="function-color" value="#ffc66d"/>
+  <color name="match-brace-fg" value="#ffef28"/>
+  <color name="match-brace-bg" value="#3b514d"/>
+
+  <!-- Configs -->
+  <style name="text" foreground="text-fg" background="text-bg"/>
+  <style name="selection" background="selection-color"/>
+  <style name="cursor" foreground="cursor-color"/>
+  <style name="current-line" background="current-line-color"/>
+  <style name="line-numbers" foreground="comment-color" background="current-line-color"/>
+
+  <style name="bracket-match" foreground="match-brace-fg" background="match-brace-bg"/>
+  <style name="bracket-mismatch" background="error-color"/>
+  <style name="search-match" background="match-brace-bg"/>
+
+  <style name="def:comment" foreground="comment-color"/>
+  <style name="def:shebang" foreground="comment-color" bold="true"/>
+  <style name="def:doc-comment-element" foreground="comment-color" italic="true"/>
+  <style name="def:note" foreground="match-brace-fg" italic="true"/>
+
+  <style name="def:string" foreground="string-color"/>
+  <style name="def:character" foreground="string-color"/>
+  <style name="def:special-char" foreground="string-color"/>
+  <style name="def:number" foreground="number-color"/>
+  <style name="def:decimal" foreground="number-color"/>
+  <style name="def:floating-point" foreground="number-color"/>
+  <style name="def:complex" foreground="number-color"/>
+  <style name="def:base-n-integer" foreground="number-color"/>
+  <style name="def:boolean" foreground="boolean-color"/>
+
+  <style name="def:builtin" foreground="keyword-color"/>
+  <style name="def:keyword" foreground="keyword-color"/>
+  <style name="def:function" foreground="function-color"/>
+  <style name="def:type" foreground="keyword-color" bold="true"/>
+  <style name="def:preprocessor" foreground="keyword-color"/>
+  <style name="def:identifier" foreground="keyword-color"/>
+  <style name="def:operator" foreground="keyword-color"/>
+  <style name="def:statement" foreground="keyword-color" bold="true"/>
+
+  <style name="def:constant" foreground="number-color"/>
+  <style name="def:special-constant" foreground="number-color"/>
+  <style name="def:error" foreground="text-bg" background="error-color"/>
+  <style name="def:underlined" italic="true" underline="true"/>
+</style-scheme>

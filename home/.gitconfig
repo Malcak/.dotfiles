@@ -1,0 +1,11 @@
+[user]
+	email = malcakx@gmail.com
+	name = malcak
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[diff]
+	colorMoved = zebra
