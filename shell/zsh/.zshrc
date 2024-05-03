@@ -29,7 +29,19 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker kubectl)
+plugins=(
+    git 
+    # docker
+    # kubectl
+    # python
+    # virtualenv
+)
+
+# Python plugin configuration
+# Uncomment the following line to automatically activate the venv virtual 
+# environment when entering a directory containing `<venv-name>/bin/activate`,
+# and automatically deactivate it when navigating out of it.
+export PYTHON_AUTO_VRUN=true
 
 source $ZSH/oh-my-zsh.sh
 
@@ -52,6 +64,3 @@ fi
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
 fi
-
-# add kubectl completions
-source <(kubectl completion zsh)
