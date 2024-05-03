@@ -32,3 +32,6 @@ fi
 # Added by linuxbrew install
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# Added by kubectl install
+# add kubectl completions
+# source <(kubectl completion zsh)
