@@ -1,0 +1,103 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$username\
+$status\
+$directory\
+$git_branch\
+$all\
+$character
+"""
+
+right_format = """
+($cmd_duration -) ($time)\
+$line_break
+"""
+
+add_newline = false
+
+[username]
+disabled = false
+format = '[@$user ]($style)'
+show_always = true
+style_user = "purple"
+
+[directory]
+disabled = false
+format = "[](yellow) [$path]($style)[$read_only]($read_only_style) "
+read_only = ":ro"
+truncation_length = 2
+
+[status]
+disabled = false
+format = "[$symbol]($style) "
+success_symbol = "[\u25cf](bold green)"
+symbol = "[\u25cf](bold red)"
+
+[character]
+error_symbol = "[»](black)"
+success_symbol = "[»](black)"
+
+[git_branch]
+style = "bold bright-black"
+symbol = "[󰊢](red) "
+
+[cmd_duration]
+min_time = 0
+
+[time]
+disabled = false
+format = "[$time]($style) [](white)"
+style = "bold white"
+
+[aws]
+symbol = "aws "
+
+[azure]
+symbol = "az "
+
+[c]
+symbol = "C "
+
+[cmake]
+symbol = "cmake "
+
+[docker_context]
+symbol = "󰡨 "
+
+[gcloud]
+symbol = "gcp "
+
+[golang]
+symbol = "go "
+
+[java]
+symbol = "java "
+
+[kubernetes]
+symbol = "󱃾 "
+
+[lua]
+symbol = "lua "
+
+[nodejs]
+symbol = "nodejs "
+
+[package]
+symbol = "pkg "
+
+[pulumi]
+symbol = "pulumi "
+
+[python]
+symbol = "py "
+
+[rust]
+symbol = "rs "
+
+[terraform]
+symbol = "󱁢 "
+
+[vagrant]
+disabled = true
