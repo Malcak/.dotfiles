@@ -4,7 +4,7 @@
 # ln -s ~/.dotfiles/config/warp-terminal/themes/standard/malcak.yaml ~/.local/share/warp-terminal/themes/standard/malcak.yaml
 
 accent: '#61afef' # Accent color for UI elements
-background: '#282828' # Terminal background color
+background: '#1e1e1e' # Terminal background color
 details: darker # Whether the theme is lighter or darker.
 foreground: '#dcdfe4' # The foreground color.
 terminal_colors: # Ansi escape colors.
