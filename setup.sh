@@ -102,11 +102,7 @@ fi
 # zsh
 if [[ "${zsh_config}" == "true" ]]; then
 
-  if [[ -z ${ZDOTDIR} ]]; then
-    ZSH_CONFIG_DIR="${HOME}/.config/zsh"
-  else
-    ZSH_CONFIG_DIR="${ZDOTDIR}"
-  fi
+  ZSH_CONFIG_DIR="${ZDOTDIR:-${HOME}/.config/zsh}"
 
   if [[ "${uninstall}" == "true" ]]; then
     prompt -i "Uninstalling ZSH cofig"
