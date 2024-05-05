@@ -84,13 +84,13 @@ while [[ $# -gt 0 ]]; do
       zsh_config="true"; shift ;;
     -b|--bash)
       bash_config="true"; shift ;;
-    -o|-omz|--oh-my-zsh-theme)
+    -o|--omz|--oh-my-zsh-theme)
       omz_theme="true"; shift ;;
     -a|--alacritty|--alacritty-config)
       alacritty_config="true"; shift ;;
-    -n|-neofetch|--neofetch-config)
+    -n|--neofetch|--neofetch-config)
       neofetch_config="true"; shift ;;
-    -t|-tilix|--oh-my-zsh-theme)
+    -t|--tilix|--oh-my-zsh-theme)
       tilix_theme="true"; shift ;;
     --debug)
       ENABLE_DEBUG="true"; shift ;;
