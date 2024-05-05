@@ -39,20 +39,31 @@ directory() {
 
 return_status() {
   # # font safe (dot = \u25cf)
-  # echo "%(?:%{$FG[002]%}\u25cf:%{$FG[001]%}\u25cf)"
+  echo "%(?:%{$FG[002]%}\u25cf:%{$FG[001]%}\u25cf)"
   # nerd fonts (octoicons)
-  echo "%(?:%{$FG[002]%}:%{$FG[001]%})"
+  # echo "%(?:%{$FG[002]%}:%{$FG[001]%})"
 }
 
 current_time() {
-  # font safe
-  # echo "%{$FG[007]%}%T%{$reset_color%}"
-  # nerd fonts (octoicons)
-  echo "%{$FG[007]%}%T%{$reset_color%}  "
+  echo "%{$FG[007]%}%T%{$reset_color%}"
 }
 
 prompt_indicator() {
   echo "%{$FG[008]%}%(!.#.»)%{$reset_color%}"
+}
+
+python_version() {
+  echo $(python --version | sed 's,Python ,,')
+}
+
+line_break() {
+  term_name=$(basename "/"$(ps -o cmd -f -p $(cat /proc/$(echo $$)/stat | cut -d \  -f 4) | tail -1 | sed 's/ .*$//'))
+  if [[ "$term_name" != "warp" ]]; then
+    echo "
+\b"
+  else
+    echo ""
+  fi
 }
 
 # git prompt info
@@ -63,11 +74,10 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$FG[003]%} "
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$FG[002]%} "
 
 # virtualenv prompt info
-ZSH_THEME_VIRTUALENV_PREFIX="%{$FG[003]%}("
+ZSH_THEME_VIRTUALENV_PREFIX="via %{$FG[003]%}py $(python_version) ("
 ZSH_THEME_VIRTUALENV_SUFFIX=")%{$reset_color%} "
 
-PROMPT='$(return_status) %B$(directory) $(git_prompt_info)%b$(virtualenv_prompt_info)
-$(username) $(prompt_indicator) '
+PROMPT='$(username) $(return_status) $(directory) %B$(git_prompt_info)%b$(virtualenv_prompt_info)$(line_break)$(prompt_indicator) '
 
 # current time in the right prompt
 # RPROMPT='$(current_time)'
@@ -94,10 +104,10 @@ function precmd() {
     elif ((s > 0)); then timeprompt=${s}.$(printf %03d $ms)s # 1.234s
     else timeprompt=${ms}ms
     fi
-    timeprompt="%B%{$FG[007]%}${timeprompt}%{$reset_color%}"
+    timeprompt="took %B%{$FG[003]%}${timeprompt}%{$reset_color%}"
     unset timer
   else
-    timeprompt="%B%{$FG[007]%} %f%b"
+    timeprompt="%B%{$FG[003]%} %f%b"
   fi
-  export RPROMPT="${timeprompt}  "
+  export RPROMPT="${timeprompt} - $(current_time) "
 }
