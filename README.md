@@ -26,7 +26,7 @@ Just pass the options for the settings you want, for example if you want only th
 
 <details> <summary> Options </summary>
 
-```bash
+```
   -g, --git, --git-config
  Set the git configurations.
 
@@ -38,6 +38,9 @@ Just pass the options for the settings you want, for example if you want only th
 
   -r, --remove, -u, --uninstall 
  Removes all selected and installed configurations. 
+
+  --debug
+ Display debug messages
 ```
 
 </details>
