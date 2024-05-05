@@ -67,34 +67,6 @@ rm ~/.config/alacritty/alacritty.yml
 ln -s ~/.dotfiles/config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 ```
 
-### Btop
-
-```sh
-# deleting old files is optional
-rm ~/.config/btop/btop.conf
-```
-
-```sh
-ln -s ~/.dotfiles/config/btop/btop.conf ~/.config/btop/btop.conf
-```
-
-### Gedit
-
-```sh
-# deleting old files is optional
-rm ~/.config/gedit/styles/darcula.xml
-```
-
-```sh
-ln -s ~/.dotfiles/config/gedit/styles/darcula.xml ~/.config/gedit/styles/darcula.xml
-```
-
-### VSCode
-
-```sh
-ln -s ~/.dotfiles/config/code/user/settings.json ~/.config/Code/User/settings.json
-```
-
 ### Gtk-3.0
 
 ```sh
@@ -117,39 +89,6 @@ rm ~/.config/qtile/autostart.sh
 ```sh
 ln -s ~/.dotfiles/config/qtile/config.py ~/.config/qtile/config.py
 ln -s ~/.dotfiles/config/qtile/autostart.sh ~/.config/qtile/autostart.sh
-```
-
-### Picom
-
-```sh
-# deleting old files is optional
-rm ~/.config/picom/picom.conf
-```
-
-```sh
-ln -s ~/.dotfiles/config/picom/picom.conf ~/.config/picom/picom.conf
-```
-
-### Htop
-
-```sh
-# deleting old files is optional
-rm ~/.config/htop/htoprc
-```
-
-```sh
-ln -s ~/.dotfiles/config/htop/htoprc ~/.config/htop/htoprc
-```
-
-### LSD
-
-```sh
-# deleting old files is optional
-rm ~/.config/lsd/config.yaml
-```
-
-```sh
-ln -s ~/.dotfiles/config/lsd/config.yaml ~/.config/lsd/config.yaml
 ```
 
 ### Neofetch

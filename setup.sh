@@ -74,26 +74,32 @@ gum log -s -l info "dotfiles repo directory found." path $DOTFILES_REPO_PATH
 # argument parsing
 while [[ $# -gt 0 ]]; do
   case "${1}" in
-    -r|--remove|-u|--uninstall)
-      uninstall="true"; shift ;;
+    -i|--interactive|--interactive-mode)
+      interactive="true"; shift ;;
     -f|--hard|--hard-mode)
       is_hard_mode="true"; shift ;;
+    -d|--debug|--debug-mode)
+      ENABLE_DEBUG="true"; shift ;;
     -g|--git|--gitconfig)
       git_config="true"; shift ;;
     -z|--zsh)
       zsh_config="true"; shift ;;
     -b|--bash)
       bash_config="true"; shift ;;
-    -o|--omz|--oh-my-zsh-theme)
-      omz_theme="true"; shift ;;
-    -a|--alacritty|--alacritty-config)
+    -o|--omz|--oh-my-zsh)
+      omz="true"; shift ;;
+    -s|--starship)
+      starship="true"; shift ;;
+    -a|--alacritty)
       alacritty_config="true"; shift ;;
-    -n|--neofetch|--neofetch-config)
-      neofetch_config="true"; shift ;;
-    -t|--tilix|--oh-my-zsh-theme)
+    -k|--kitty)
+      kitty="true"; shift ;;
+    -t|--tilix)
       tilix_theme="true"; shift ;;
-    --debug)
-      ENABLE_DEBUG="true"; shift ;;
+    -n|--neofetch)
+      neofetch_config="true"; shift ;;
+    -r|--remove|-u|--uninstall)
+      uninstall="true"; shift ;;
     *)
       gum log -s -l error "Unrecognized installation argument." argument "'${1}'"
       prompt_error="true"; shift ;;
@@ -103,6 +109,12 @@ done
 if [[ "${prompt_error}" == "true" ]]; then
   gum log -l fatal "Argument parsing with errors, stopping execution."
   exit 1
+fi
+
+# interactive mode
+if [[ "${interactive}" == "true" ]]; then
+  gum log -l debug "Interactive mode is enabled."
+
 fi
 
 if [[ "${is_hard_mode}" == "true" ]]; then
