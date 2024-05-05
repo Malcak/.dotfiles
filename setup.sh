@@ -51,7 +51,7 @@ restore_previous() {
 
 prompt -t "Installing Malcak Dotfiles!"
 
-readonly DOTFILES_REPO_DIR="$(dirname "$(readlink -m "${0}")")"
+readonly DOTFILES_REPO_PATH="$(dirname "$(readlink -m "${0}")")"
 
 # argument parsing
 while [[ $# -gt 0 ]]; do
@@ -94,7 +94,7 @@ if [[ "${git_config}" == "true" ]]; then
   else
     prompt -i "Setting up git cofig"
     remove_previous "${HOME}/.gitconfig" "${is_hard_mode}"
-    ln -s "${DOTFILES_REPO_DIR}/home/.gitconfig" "${HOME}/.gitconfig"
+    ln -s "${DOTFILES_REPO_PATH}/home/.gitconfig" "${HOME}/.gitconfig"
     prompt -s "Git config set up correctly"
   fi
 fi
@@ -131,10 +131,10 @@ if [[ "${zsh_config}" == "true" ]]; then
       mkdir -p "${HOME}/.cache/zsh"
     fi
 
-    ln -s "${DOTFILES_REPO_DIR}/shell/zsh/.zshenv" "${HOME}/.zshenv"
-    ln -s "${DOTFILES_REPO_DIR}/shell/zsh/.zshrc" "${ZSH_CONFIG_DIR}/.zshrc"
-    ln -s "${DOTFILES_REPO_DIR}/shell/zsh/.zaliases" "${ZSH_CONFIG_DIR}/.zaliases"
-    ln -s "${DOTFILES_REPO_DIR}/shell/zsh/.zlogout" "${ZSH_CONFIG_DIR}/.zlogout"
+    ln -s "${DOTFILES_REPO_PATH}/shell/zsh/.zshenv" "${HOME}/.zshenv"
+    ln -s "${DOTFILES_REPO_PATH}/shell/zsh/.zshrc" "${ZSH_CONFIG_DIR}/.zshrc"
+    ln -s "${DOTFILES_REPO_PATH}/shell/zsh/.zaliases" "${ZSH_CONFIG_DIR}/.zaliases"
+    ln -s "${DOTFILES_REPO_PATH}/shell/zsh/.zlogout" "${ZSH_CONFIG_DIR}/.zlogout"
     prompt -s "ZSH config set up correctly"
   fi
 fi
