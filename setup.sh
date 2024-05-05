@@ -76,11 +76,11 @@ while [[ $# -gt 0 ]]; do
       tilix_theme="true"; shift ;;
     *)
       prompt -e "ERROR: Unrecognized installation option "${1}"."
-      has_any_error="true"; shift ;;
+      prompt_error="true"; shift ;;
   esac
 done
 
-if [[ "${has_any_error}" == "true" ]]; then
+if [[ "${prompt_error}" == "true" ]]; then
   prompt -e "Argument parsing with errors, stopping execution"
   exit 1
 fi
