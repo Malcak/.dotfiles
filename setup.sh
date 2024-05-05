@@ -40,6 +40,14 @@ restore_previous() {
   fi
 }
 
+install_config() {
+  # $1: source
+  # $2: destination
+
+  gum log -s -l info "Creating symbolic link." file "${2}"
+  ln -s "${1}" "${2}"
+}
+
 # pre-checks
 if ! command -v gum &> /dev/null; then
     echo "gum is not installed."
@@ -110,8 +118,7 @@ if [[ "${git_config}" == "true" ]]; then
   else
     gum log -l info "Setting up Git cofig."
     remove_previous "${HOME}/.gitconfig" "${is_hard_mode}"
-    gum log -s -l info "Creating symbolic link." file "${HOME}/.gitconfig"
-    ln -s "${DOTFILES_REPO_PATH}/home/.gitconfig" "${HOME}/.gitconfig"
+    install_config "${DOTFILES_REPO_PATH}/home/.gitconfig" "${HOME}/.gitconfig"
     gum log -l info "Git config is set up."
   fi
 fi
@@ -154,14 +161,10 @@ if [[ "${zsh_config}" == "true" ]]; then
       mkdir -p "${HOME}/.cache/zsh"
     fi
 
-    gum log -s -l info "Creating symbolic link." file "${HOME}/.zshenv"
-    ln -s "${DOTFILES_REPO_PATH}/shell/zsh/.zshenv" "${HOME}/.zshenv"
-    gum log -s -l info "Creating symbolic link." file "${ZSH_CONFIG_DIR}/.zshrc"
-    ln -s "${DOTFILES_REPO_PATH}/shell/zsh/.zshrc" "${ZSH_CONFIG_DIR}/.zshrc"
-    gum log -s -l info "Creating symbolic link." file "${HOME}/.zaliases"
-    ln -s "${DOTFILES_REPO_PATH}/shell/zsh/.zaliases" "${ZSH_CONFIG_DIR}/.zaliases"
-    gum log -s -l info "Creating symbolic link." file "${HOME}/.zlogout"
-    ln -s "${DOTFILES_REPO_PATH}/shell/zsh/.zlogout" "${ZSH_CONFIG_DIR}/.zlogout"
+    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zshenv" "${HOME}/.zshenv"
+    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zshrc" "${ZSH_CONFIG_DIR}/.zshrc"
+    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zaliases" "${ZSH_CONFIG_DIR}/.zaliases"
+    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zlogout" "${ZSH_CONFIG_DIR}/.zlogout"
     gum log -l info "ZSH config is set up."
   fi
 fi
