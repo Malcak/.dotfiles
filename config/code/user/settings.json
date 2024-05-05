@@ -1,13 +1,6 @@
 {
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": false,
   "editor.cursorSurroundingLines": 3,
   "editor.fontFamily": "Cascadia Code, CaskaydiaCove NF, JetBrains Mono, Consolas, 'Courier New', monospace",
@@ -17,6 +10,10 @@
   "editor.guides.indentation": false,
   "editor.lineHeight": 1.5,
   "editor.minimap.enabled": false,
+  "editor.rulers": [
+    80,
+    120
+  ],
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.unicodeHighlight.nonBasicASCII": false,
@@ -25,31 +22,26 @@
   "explorer.confirmDelete": false,
   "explorer.decorations.colors": false,
   "explorer.excludeGitIgnore": true,
-  "explorer.openEditors.visible": 0,
+  "files.associations": {
+    "*.consul": "hcl",
+    "*.nomad": "hcl",
+    "*.yml": "yaml"
+  },
+  "git.autofetch": true,
   "git.mergeEditor": true,
+  "git.openRepositoryInParentFolders": "never",
   "gitlens.codeLens.enabled": false,
   "gitlens.currentLine.format": "${author, }${agoOrDate}",
+  "gitlens.graph.minimap.enabled": false,
   "javascript.suggest.paths": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "redhat.telemetry.enabled": false,
-  "security.workspace.trust.untrustedFiles": "open",
-  "settingsSync.ignoredSettings": [
-    "window.titleBarStyle",
-    "window.menuBarVisibility",
-    "-window.zoomLevel"
-  ],
-  "sortJSON.contextMenu": {
-    "sortJSON": true,
-    "sortJSONAlphaNum": true,
-    "sortJSONAlphaNumReverse": false,
-    "sortJSONKeyLength": false,
-    "sortJSONKeyLengthReverse": false,
-    "sortJSONReverse": false,
-    "sortJSONType": true,
-    "sortJSONTypeReverse": false,
-    "sortJSONValues": false,
-    "sortJSONValuesReverse": false
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "redhat.telemetry.enabled": true,
+  "remote.SSH.remotePlatform": {
+    "raspberry.local": "linux"
   },
+  "security.workspace.trust.untrustedFiles": "open",
+  "terminal.external.osxExec": "Warp.app",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.windows": "Git Bash",
   "terminal.integrated.fontFamily": "Hack Nerd Font",
@@ -59,31 +51,9 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "vsintellicode.typescript.completionsEnabled": true,
   "window.commandCenter": true,
-  "window.menuBarVisibility": "toggle",
-  "window.titleBarStyle": "native",
   "workbench.colorCustomizations": {
-    "[CodeSandbox Black]": {
-      "editor.lineHighlightBackground": "#202020",
-      "editor.lineHighlightBorder": "#202020"
-    },
-    "[Community Material Theme Darker High Contrast]": {
-      "breadcrumb.background": "#1a1a1a",
-      "editor.background": "#1e1e1e",
-      "editor.lineHighlightBackground": "#1a1a1a",
-      "editor.lineHighlightBorder": "#1a1a1a",
-      "editorGroupHeader.border": "#101010",
-      "editorGroupHeader.tabsBackground": "#1a1a1a",
-      "editorGroupHeader.tabsBorder": "#101010",
-      "scrollbar.shadow": "#101010",
-      "tab.activeBackground": "#1a1a1a",
-      "tab.activeBorder": "#1a1a1a",
-      "tab.activeBorderTop": "#7fc4c3",
-      "tab.border": "#101010",
-      "tab.inactiveBackground": "#1a1a1a",
-      "terminal.background": "#1e1e1e"
-    }
+    "editorRuler.foreground": "#2f2f2f"
   },
-  "workbench.colorTheme": "Community Material Theme Darker High Contrast",
   "workbench.iconTheme": "gruvbox-material-icon-theme",
   "workbench.productIconTheme": "fluent-icons",
   "workbench.sideBar.location": "right",
