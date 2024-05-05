@@ -47,6 +47,13 @@ if ! command -v gum &> /dev/null; then
     exit 1
 fi
 
+# variables
+USER=${USER:-$(id -u -n)}
+# POSIX
+HOME="${HOME:-$(getent passwd $USER 2>/dev/null | cut -d: -f6)}"
+# macOS does not have getent, but this works even if $HOME is unset
+HOME="${HOME:-$(eval echo ~$USER)}"
+
 # script start
 gum style \
 	--foreground 105 --border-foreground 057 --bold --border rounded \
