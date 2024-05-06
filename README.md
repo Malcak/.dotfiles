@@ -28,7 +28,7 @@ Just pass the options for the settings you want, for example if you want only th
 
 ```
   -i, --interactive, --interactive-mode
- Run this script in interactive mode
+ Run this script in interactive mode.
 
   -d, --dry, --dry-mode
  No real action will be performed. Recommended with debug mode.
@@ -37,13 +37,16 @@ Just pass the options for the settings you want, for example if you want only th
  Removes previous configurations when setting up new ones, and does not make a backup. 
 
   -D --debug, --debug-mode
- Display debug messages
+ Display debug messages.
  
   -g, --git, --git-config
  Set the git configurations.
 
   -z, --zsh
  Set the ZSH configurations.
+
+  -o, --omz, --oh-my-zsh
+ Set the oh-my-zsh prompt configurations.
 
   -s, --starship
  Set the starship prompt configurations.

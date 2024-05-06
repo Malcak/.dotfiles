@@ -227,6 +227,24 @@ if [[ "${zsh_config}" == "true" ]]; then
   fi
 fi
 
+# oh-my-zsh config
+if [[ "${omz}" == "true" ]]; then
+  if [[ -d "${ZSH}" ]]; then
+    if [[ "${uninstall}" == "true" ]]; then
+      gum log -l info "Uninstalling oh-my-zsh cofig."
+      restore_previous "${ZSH}/themes/malcak.zsh-theme" "${is_dry_mode}"
+      gum log -l info "Oh-my-zsh config successfully uninstalled."
+    else
+      gum log -l info "Setting up oh-my-zsh cofig."
+      remove_previous "${ZSH}/themes/malcak.zsh-theme" "${is_dry_mode}" "${is_hard_mode}"
+      install_config "${DOTFILES_REPO_PATH}/home/oh-my-zsh/themes/malcak.zsh-theme" "${ZSH}/themes/malcak.zsh-theme" "${is_dry_mode}"
+      gum log -l info "Oh-my-zsh config is set up."
+    fi
+  else
+    gum log -l error "Oh-my-zsh is not installed. Skipping this installation."
+  fi
+fi
+
 # starship config
 if [[ "${starship}" == "true" ]]; then
   if [[ "${uninstall}" == "true" ]]; then
