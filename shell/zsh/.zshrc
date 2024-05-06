@@ -16,11 +16,11 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 # Prompt configuration
-prefered_prompt="oh-my-zsh" # options: vanilla, starship, oh-my-zsh
+prefered_prompt="vanilla" # options: vanilla, starship, oh-my-zsh
 
 config_starship() {
     # Starship prompt
-    if ! command -v starship &> /dev/null; then
+    if command -v starship &> /dev/null; then
         eval "$(starship init zsh)"
     fi
 }
