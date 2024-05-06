@@ -227,6 +227,35 @@ if [[ "${zsh_config}" == "true" ]]; then
   fi
 fi
 
+# bash config
+if [[ "${bash_config}" == "true" ]]; then
+
+  if [[ "${uninstall}" == "true" ]]; then
+    gum log -l info "Uninstalling Bash cofig."
+
+    restore_previous "${HOME}/.bashrc" "${is_dry_mode}"
+    restore_previous "${HOME}/.bash_profile" "${is_dry_mode}"
+    restore_previous "${HOME}/.bash_aliases" "${is_dry_mode}"
+    restore_previous "${HOME}/.bash_logout" "${is_dry_mode}"
+
+    gum log  -l info "Bash config successfully uninstalled."
+  else
+  
+    gum log -l info "Setting up Bash cofig."
+
+    remove_previous "${HOME}/.bashrc" "${is_dry_mode}" "${is_hard_mode}"
+    remove_previous "${HOME}/.bash_profile" "${is_dry_mode}" "${is_hard_mode}"
+    remove_previous "${HOME}/.bash_aliases" "${is_dry_mode}" "${is_hard_mode}"
+    remove_previous "${HOME}/.bash_logout" "${is_dry_mode}" "${is_hard_mode}"
+    install_config "${DOTFILES_REPO_PATH}/shell/bash/.bashrc" "${HOME}/.bashrc" "${is_dry_mode}"
+    install_config "${DOTFILES_REPO_PATH}/shell/bash/.bash_profile" "${HOME}/.bash_profile" "${is_dry_mode}"
+    install_config "${DOTFILES_REPO_PATH}/shell/bash/.bash_aliases" "${HOME}/.bash_aliases" "${is_dry_mode}"
+    install_config "${DOTFILES_REPO_PATH}/shell/bash/.bash_logout" "${HOME}/.bash_logout" "${is_dry_mode}"
+
+    gum log -l info "Bash config is set up."
+  fi
+fi
+
 # oh-my-zsh config
 if [[ "${omz}" == "true" ]]; then
   if [[ -d "${ZSH}" ]]; then
