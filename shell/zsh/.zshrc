@@ -5,6 +5,10 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 
+# Set case-insensitive completions
+setopt NO_CASE_GLOB
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
 # Set history configuration
 HISTFILE=~/.cache/zsh/.zhistory
 HISTSIZE=1024
