@@ -2,6 +2,7 @@
 
 [[ -n "${ENABLE_DEBUG+x}" ]] && set -x
 
+# functions
 remove_previous() {
   # $1: file to remove
   # $2: hard mode flag. if it's set to true, the existing config file will be
@@ -57,9 +58,9 @@ fi
 
 # variables
 USER=${USER:-$(id -u -n)}
-# POSIX
+## POSIX
 HOME="${HOME:-$(getent passwd $USER 2>/dev/null | cut -d: -f6)}"
-# macOS does not have getent, but this works even if $HOME is unset
+## macOS does not have getent, but this works even if $HOME is unset
 HOME="${HOME:-$(eval echo ~$USER)}"
 
 # script start
