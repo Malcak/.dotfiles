@@ -1,12 +1,4 @@
 # ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
-
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
@@ -39,5 +31,6 @@ fi
 # Added by flutter install (see https://docs.flutter.dev/get-started/install/linux)
 # export FLUTTER_PATH="$HOME/.local/bin/flutter"; export PATH="$FLUTTER_PATH/bin:$PATH";
 
-# Added by jetbrains toolbox app
-# export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+# Added by kubectl install
+# add kubectl completions
+# source <(kubectl completion zsh)
