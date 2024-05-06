@@ -45,6 +45,9 @@ Just pass the options for the settings you want, for example if you want only th
   -z, --zsh
  Set the ZSH configurations.
 
+  -b, --bash
+ Set the Bash configurations.
+
   -o, --omz, --oh-my-zsh
  Set the oh-my-zsh prompt configurations.
 
