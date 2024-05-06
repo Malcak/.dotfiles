@@ -27,6 +27,9 @@ Just pass the options for the settings you want, for example if you want only th
 <details> <summary> Options </summary>
 
 ```
+  -i, --interactive, --interactive-mode
+ Run this script in interactive mode
+
   -d, --dry, --dry-mode
  No real action will be performed. Recommended with debug mode.
 
