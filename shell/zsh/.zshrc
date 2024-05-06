@@ -10,6 +10,11 @@ HISTFILE=~/.cache/zsh/.zhistory
 HISTSIZE=1024
 SAVEHIST=1024
 
+# Starship prompt
+if ! command -v starship &> /dev/null; then
+    eval "$(starship init zsh)"
+fi
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
