@@ -86,7 +86,7 @@ gum log -s -l info "dotfiles repo directory found." path $DOTFILES_REPO_PATH
 while [[ $# -gt 0 ]]; do
   case "${1}" in
     -i|--interactive|--interactive-mode)
-      interactive="true"; shift ;;
+      interactive_mode="true"; shift ;;
     -d|--dry|--dry-mode)
       is_dry_mode="true"; shift ;;
     -f|--hard|--hard-mode)
@@ -125,9 +125,40 @@ if [[ "${prompt_error}" == "true" ]]; then
 fi
 
 # interactive mode
-if [[ "${interactive}" == "true" ]]; then
-  gum log -l debug "Interactive mode is enabled."
+if [[ "${interactive_mode}" == "true" ]]; then
+  [[ -n "${ENABLE_DEBUG+x}" ]] && gum log -l debug "Interactive mode is enabled."
 
+  gum confirm "Do you want to run in dry-mode? (No real actions will be taken)" && is_dry_mode="true"
+  [[ "${is_dry_mode}" == "true" ]] && gum log -l warn "Dry mode is enabled. No real action will be performed."
+
+  gum confirm --default=false "Do you want to run in hard-mode (No backup mode >:^))?" && is_hard_mode="true"
+
+  action=$(gum choose --limit 1 --header "What do you like to do?" "Install!" "Uninstall :c")
+  [[ "${action}" == "Uninstall :c" ]] && uninstall="true"
+
+  config_list=$(gum choose --no-limit --header "Which configs do you want to install?" "git" "zsh" "bash" "oh-my-zsh" "starship" "alacritty" "kitty" "tilix" "neofetch")
+  while IFS= read -r tool; do
+    case "${tool}" in
+      git)
+        git_config="true"; shift ;;
+      zsh)
+        zsh_config="true"; shift ;;
+      bash)
+        bash_config="true"; shift ;;
+      oh-my-zsh)
+        omz="true"; shift ;;
+      starship)
+        starship="true"; shift ;;
+      alacritty)
+        alacritty_config="true"; shift ;;
+      kitty)
+        kitty="true"; shift ;;
+      tilix)
+        tilix_theme="true"; shift ;;
+      neofetch)
+        neofetch_config="true"; shift ;;
+    esac
+  done <<< "$config_list"
 fi
 
 if [[ "${is_hard_mode}" == "true" ]]; then
