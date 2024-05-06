@@ -5,34 +5,36 @@
 # functions
 remove_previous() {
   # $1: file to remove
-  # $2: hard mode flag. if it's set to true, the existing config file will be
+  # $2: dry mode flag. if it's set to true, no real action will be performed
+  # $3: hard mode flag. if it's set to true, the existing config file will be
   # remove. if it's set to false, the existing config will be backup
 
   if [[ -f "${1}" ]]; then
     gum log -s -l info "Existing config file found." file "${1}"
-    if [[ "${2}" == "true" ]]; then
+    if [[ "${3}" == "true" ]]; then
       [[ -n "${ENABLE_DEBUG+x}" ]] && gum log -l debug "Hard mode is enabled."
       gum log -s -l info "Removing existing config file." file "${1}"
-      rm -rf "${1}"
+      [[ "${2}" != "true" ]] && rm -rf "${1}"
     else
       [[ -n "${ENABLE_DEBUG+x}" ]] && gum log -l debug "Hard mode is disabled."
-      gum log -l info "Backing up existing config file." file "${1}.backup"
-      mv "${1}" "${1}.backup"
+      gum log -s -l info "Backing up existing config file." src "${1}" dst "${1}.backup"
+      [[ "${2}" != "true" ]] && mv "${1}" "${1}.backup"
     fi
   fi
 }
 
 restore_previous() {
   # $1: symbolic link to remove
+  # $2: dry mode flag. if it's set to true, no real action will be performed
 
   if [[ -h "${1}" ]]; then
     gum log -s -l info "Removing existing symbolic link." file "${1}"
-    rm -f "${1}"
+    [[ "${2}" != "true" ]] && rm -f "${1}"
 
     if [[ -f "${1}.backup" ]]; then
       gum log -l info "Backup file found."
-      gum log -s -l info "Restoring backup file." file "${1}.backup"
-      mv "${1}.backup" "${1}"
+      gum log -s -l info "Restoring backup file." src "${1}.backup" dst "${1}"
+      [[ "${2}" != "true" ]] && mv "${1}.backup" "${1}"
     else
       gum log -s -l info "Backup file not found." file "${1}.backup"
     fi
@@ -41,12 +43,20 @@ restore_previous() {
   fi
 }
 
+create_dir() {
+  # $1: full path
+  # $2: dry mode flag. if it's set to true, no real action will be performed
+  gum log -s -l info "Creating directory." file "${1}"
+  [[ "${2}" != "true" ]] && mkdir -p "${1}"
+}
+
 install_config() {
   # $1: source
   # $2: destination
+  # $3: dry mode flag. if it's set to true, no real action will be performed
 
-  gum log -s -l info "Creating symbolic link." file "${2}"
-  ln -s "${1}" "${2}"
+  gum log -s -l info "Creating symbolic link." src "${1}" dst "${2}"
+  [[ "${3}" != "true" ]] && ln -s "${1}" "${2}"
 }
 
 # pre-checks
@@ -77,9 +87,11 @@ while [[ $# -gt 0 ]]; do
   case "${1}" in
     -i|--interactive|--interactive-mode)
       interactive="true"; shift ;;
+    -d|--dry|--dry-mode)
+      is_dry_mode="true"; shift ;;
     -f|--hard|--hard-mode)
       is_hard_mode="true"; shift ;;
-    -d|--debug|--debug-mode)
+    -D|--debug|--debug-mode)
       ENABLE_DEBUG="true"; shift ;;
     -g|--git|--gitconfig)
       git_config="true"; shift ;;
@@ -119,19 +131,23 @@ if [[ "${interactive}" == "true" ]]; then
 fi
 
 if [[ "${is_hard_mode}" == "true" ]]; then
-  gum log -l warn "Hard mode is enabled. Existing config files for the selected tools will be removed."
+  if [[ "${is_dry_mode}" == "true" ]]; then
+    gum log -l info "Hard mode and Dry mode are enabled. No files will be deleted."
+  else
+    gum log -l warn "Hard mode is enabled. Existing config files for the selected tools will be removed."
+  fi
 fi
 
 # git config
 if [[ "${git_config}" == "true" ]]; then
   if [[ "${uninstall}" == "true" ]]; then
     gum log -l info "Uninstalling Git cofig."
-    restore_previous "${HOME}/.gitconfig"
+    restore_previous "${HOME}/.gitconfig" "${is_dry_mode}"
     gum log -l info "Git config successfully uninstalled."
   else
     gum log -l info "Setting up Git cofig."
-    remove_previous "${HOME}/.gitconfig" "${is_hard_mode}"
-    install_config "${DOTFILES_REPO_PATH}/home/.gitconfig" "${HOME}/.gitconfig"
+    remove_previous "${HOME}/.gitconfig" "${is_dry_mode}" "${is_hard_mode}"
+    install_config "${DOTFILES_REPO_PATH}/home/.gitconfig" "${HOME}/.gitconfig" "${is_dry_mode}"
     gum log -l info "Git config is set up."
   fi
 fi
@@ -144,40 +160,38 @@ if [[ "${zsh_config}" == "true" ]]; then
   if [[ "${uninstall}" == "true" ]]; then
     gum log -l info "Uninstalling ZSH cofig."
 
-    restore_previous "${HOME}/.zshenv"
+    restore_previous "${HOME}/.zshenv" "${is_dry_mode}"
     if [[ -d "${ZSH_CONFIG_DIR}" ]]; then
       gum log -s -l info "Config dir found." file "${ZSH_CONFIG_DIR}"
-      restore_previous "${ZSH_CONFIG_DIR}/.zshrc"
-      restore_previous "${ZSH_CONFIG_DIR}/.zaliases"
-      restore_previous "${ZSH_CONFIG_DIR}/.zlogout"
+      restore_previous "${ZSH_CONFIG_DIR}/.zshrc" "${is_dry_mode}"
+      restore_previous "${ZSH_CONFIG_DIR}/.zaliases" "${is_dry_mode}"
+      restore_previous "${ZSH_CONFIG_DIR}/.zlogout" "${is_dry_mode}"
     fi
 
     gum log  -l info "ZSH config successfully uninstalled."
   else
     gum log -l info "Setting up ZSH cofig."
-    remove_previous "${HOME}/.zshenv" "${is_hard_mode}"
+    remove_previous "${HOME}/.zshenv" "${is_dry_mode}" "${is_hard_mode}"
 
     if [[ -d "${ZSH_CONFIG_DIR}" ]]; then
       gum log -s -l info "Config dir found." file "${ZSH_CONFIG_DIR}"
-      remove_previous "${ZSH_CONFIG_DIR}/.zshrc" "${is_hard_mode}"
-      remove_previous "${ZSH_CONFIG_DIR}/.zaliases" "${is_hard_mode}"
-      remove_previous "${ZSH_CONFIG_DIR}/.zlogout" "${is_hard_mode}"
+      remove_previous "${ZSH_CONFIG_DIR}/.zshrc" "${is_dry_mode}" "${is_hard_mode}"
+      remove_previous "${ZSH_CONFIG_DIR}/.zaliases" "${is_dry_mode}" "${is_hard_mode}"
+      remove_previous "${ZSH_CONFIG_DIR}/.zlogout" "${is_dry_mode}" "${is_hard_mode}"
     else
       gum log -l info "Config dir not found."
-      gum log -s -l info "Creating config dir." file "${ZSH_CONFIG_DIR}"
-      mkdir -p "${ZSH_CONFIG_DIR}"
+      create_dir "${ZSH_CONFIG_DIR}" "${is_dry_mode}"
     fi
 
-    if [[ -d "${HOME}/.cache/zsh" ]]; then
+    if [[ ! -d "${HOME}/.cache/zsh" ]]; then
       gum log -l info "Cache dir not found."
-      gum log -s -l info "Creating cache dir." file "${HOME}/.cache/zsh"
-      mkdir -p "${HOME}/.cache/zsh"
+      create_dir "${HOME}/.cache/zsh" "${is_dry_mode}"
     fi
 
-    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zshenv" "${HOME}/.zshenv"
-    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zshrc" "${ZSH_CONFIG_DIR}/.zshrc"
-    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zaliases" "${ZSH_CONFIG_DIR}/.zaliases"
-    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zlogout" "${ZSH_CONFIG_DIR}/.zlogout"
+    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zshenv" "${HOME}/.zshenv" "${is_dry_mode}"
+    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zshrc" "${ZSH_CONFIG_DIR}/.zshrc" "${is_dry_mode}"
+    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zaliases" "${ZSH_CONFIG_DIR}/.zaliases" "${is_dry_mode}"
+    install_config "${DOTFILES_REPO_PATH}/shell/zsh/.zlogout" "${ZSH_CONFIG_DIR}/.zlogout" "${is_dry_mode}"
     gum log -l info "ZSH config is set up."
   fi
 fi

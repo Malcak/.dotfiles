@@ -27,20 +27,23 @@ Just pass the options for the settings you want, for example if you want only th
 <details> <summary> Options </summary>
 
 ```
+  -d, --dry, --dry-mode
+ No real action will be performed. Recommended with debug mode.
+
+  -f, --hard, --hard-mode 
+ Removes previous configurations when setting up new ones, and does not make a backup. 
+
+  -D --debug, --debug-mode
+ Display debug messages
+ 
   -g, --git, --git-config
  Set the git configurations.
 
   -z, --zsh
  Set the ZSH configurations.
 
-  -f, --hard, --hard-mode 
- Removes previous configurations when setting up new ones, and does not make a backup. 
-
   -r, --remove, -u, --uninstall 
  Removes all selected and installed configurations. 
-
-  --debug
- Display debug messages
 ```
 
 </details>
