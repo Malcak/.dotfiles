@@ -39,8 +39,5 @@ fi
 # Added by flutter install (see https://docs.flutter.dev/get-started/install/linux)
 # export FLUTTER_PATH="$HOME/.local/bin/flutter"; export PATH="$FLUTTER_PATH/bin:$PATH";
 
-# Added by linuxbrew install
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
 # Added by jetbrains toolbox app
 # export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
