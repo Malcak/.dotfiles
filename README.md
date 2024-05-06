@@ -45,6 +45,9 @@ Just pass the options for the settings you want, for example if you want only th
   -z, --zsh
  Set the ZSH configurations.
 
+  -s, --starship
+ Set the starship prompt configurations.
+
   -r, --remove, -u, --uninstall 
  Removes all selected and installed configurations. 
 ```

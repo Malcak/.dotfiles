@@ -226,3 +226,17 @@ if [[ "${zsh_config}" == "true" ]]; then
     gum log -l info "ZSH config is set up."
   fi
 fi
+
+# starship config
+if [[ "${starship}" == "true" ]]; then
+  if [[ "${uninstall}" == "true" ]]; then
+    gum log -l info "Uninstalling Starship cofig."
+    restore_previous "${HOME}/.config/starship.toml" "${is_dry_mode}"
+    gum log -l info "Starship config successfully uninstalled."
+  else
+    gum log -l info "Setting up Starship cofig."
+    remove_previous "${HOME}/.config/starship.toml" "${is_dry_mode}" "${is_hard_mode}"
+    install_config "${DOTFILES_REPO_PATH}/config/starship.toml" "${HOME}/.config/starship.toml" "${is_dry_mode}"
+    gum log -l info "Starship config is set up."
+  fi
+fi
