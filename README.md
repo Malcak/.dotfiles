@@ -1,28 +1,84 @@
 # Malcak Dotfiles
 
-In this repository you will find my configuration files, in the home folder you will find the config files that generally should be in the user's home directory, in the shell folder you will find the configuration files for each shell that I use separately and in the config folder you will find the config files that generally should be in `$HOME/.config` directory.
+In this repository you will find my configuration files, it's structure to work
+with [GNU Stow](https://www.gnu.org/software/stow/), so each folder under the 
+root structured is positioned as if the folder were the `$HOME` directory.
 
-## How to use them
-
-First, clone the repo.
-
-```sh
-git clone https://github.com/Malcak/dotfiles.git
+```
+# $HOME
+~
+└── .config
+    └── kitty
+        ├── kitty.conf
+        └── themes
+            └── malcak.conf
+```
+```
+# $HOME/.dotfiles/kitty
+kitty
+└── .config
+    └── kitty
+        ├── kitty.conf
+        └── themes
+            └── malcak.conf
 ```
 
-Then, create a symbolic link to the directory where the file should be located. e.g. 
+## Requirements
+
+- `git`
+- [`stow`](https://www.gnu.org/software/stow/manual/stow.html)
+
+If you want to use the `setup.sh` script:
+
+- [`gum`](https://github.com/charmbracelet/gum)
+
+## Installation
+
+First, clone this repository in your home directory.
+
 ```sh
-ln -s ~/.dotfiles/foo/bar ~/.config/foo/bar
+git clone git@github.com:Malcak/.dotfiles.git ~/.dotfiles
+# cd ~/.dotfiles
 ```
-You can find more examples in [EXAMPLES.md](./EXAMPLES.md)
+
+Then use GNU stow to create symlinks by package.
+```
+stow [ options ] package ...
+```
+
+If you want to perform a dry-run.
+```sh
+stow --simulate package
+```
+
+If you want to include existing files into the dotfiles repo.
+```sh
+stow --adopt package #warning
+```
+
+> [!WARNING]
+> `--adopt` This behaviour is specifically intended to alter the contents of 
+your stow directory. If you do not want that, this option is not for you.
+
+If you want to remove the symlinks.
+```sh
+stow -D package
+```
+
+If you want to recreate the symlinks.
+```sh
+stow -R package
+```
 
 ## `setup` script ⚠️ Work in progress ⚠️
 
-The `setup` script is the easiest way to set up the configurations, see the example of use and the configurations to use it.
+The `setup` script is the most friendly way to set up the dotfiles, see 
+the usage example and options to use it.
 
 Usage: `./setup.sh [OPTIONS...]`
 
-Just pass the options for the settings you want, for example if you want only the zsh configuration then `./setup.sh --zsh`. and in the same way to remove the settings
+Just pass options for the settings you want, e.g. if you want only the 
+zsh configuration then `./setup.sh --zsh`.
 
 <details> <summary> Options </summary>
 
@@ -33,7 +89,7 @@ Just pass the options for the settings you want, for example if you want only th
   -d, --dry, --dry-mode
  No real action will be performed. Recommended with debug mode.
 
-  -f, --hard, --hard-mode 
+  -f, --hard, --hard-mode
  Removes previous configurations when setting up new ones, and does not make a backup. 
 
   -D --debug, --debug-mode
@@ -54,7 +110,7 @@ Just pass the options for the settings you want, for example if you want only th
   -s, --starship
  Set the starship prompt configurations.
 
-  -r, --remove, -u, --uninstall 
+  -r, --remove, -u, --uninstall
  Removes all selected and installed configurations. 
 ```
 
