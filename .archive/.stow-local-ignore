@@ -24,4 +24,6 @@ _darcs
 
 # Personal excludes
 
-\.vscode
+\.archive
+^/setup.sh
+
