@@ -31,7 +31,7 @@ config_starship() {
 
 config_omz() {
     # Path to your oh-my-zsh installation.
-    export ZSH="$HOME/.oh-my-zsh"
+    export ZSH="$ZDOTDIR/.oh-my-zsh"
 
     # Set name of the theme
     ZSH_THEME="robbyrussell"
