@@ -7,13 +7,13 @@ $status\
 $directory\
 $git_branch\
 $all\
+$line_break\
 $character
 """
 
-right_format = """
-($cmd_duration-) ($time)\
-$line_break
-"""
+# right_format = """
+# ($cmd_duration-) ($time)\
+# """
 
 add_newline = false
 
@@ -44,10 +44,11 @@ style = "bold bright-black"
 symbol = "[󰊢](red) "
 
 [cmd_duration]
+disabled = true
 min_time = 0
 
 [time]
-disabled = false
+disabled = true
 format = "[$time]($style) [](white)"
 style = "bold white"
 
