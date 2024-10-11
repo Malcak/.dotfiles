@@ -11,16 +11,16 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 # Set history configuration
 HISTFILE=~/.cache/zsh/.zhistory
-HISTSIZE=1024
-SAVEHIST=1024
+HISTSIZE=8192
+SAVEHIST=8192
 
-# execute vte.sh
+# execute vte.sh for tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
 fi
 
 # Prompt configuration
-prefered_prompt="vanilla" # options: vanilla, starship, oh-my-zsh
+prefered_prompt="starship" # options: starship, ohmyzsh
 
 config_starship() {
     # Starship prompt
@@ -54,7 +54,7 @@ config_omz() {
     # Example format: plugins=(rails git textmate ruby lighthouse)
     # Add wisely, as too many plugins slow down shell startup.
     plugins=(
-        git 
+        git
         # docker
         # kubectl
         # python
@@ -62,7 +62,7 @@ config_omz() {
     )
 
     # Python plugin configuration
-    # Uncomment the following line to automatically activate the venv virtual 
+    # Uncomment the following line to automatically activate the venv virtual
     # environment when entering a directory containing `<venv-name>/bin/activate`,
     # and automatically deactivate it when navigating out of it.
     # export PYTHON_AUTO_VRUN=true
@@ -73,7 +73,7 @@ config_omz() {
 case "${prefered_prompt}" in
     starship)
         config_starship ;;
-    oh-my-zsh)
+    ohmyzsh)
         config_omz ;;
 esac
 
