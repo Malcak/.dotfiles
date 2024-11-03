@@ -36,8 +36,8 @@ success_symbol = "[\u25cf](bold green)"
 symbol = "[\u25cf](bold red)"
 
 [character]
-error_symbol = "[»](black)"
-success_symbol = "[»](black)"
+error_symbol = "[»](bright-black)"
+success_symbol = "[»](bright-black)"
 
 [git_branch]
 style = "bold bright-black"
