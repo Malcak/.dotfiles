@@ -27,5 +27,5 @@ fi
 
 # Added by kubectl install
 # add kubectl completions
-# source <(kubectl completion zsh)
-# source <(docker completion zsh)
+command -v kubectl > /dev/null 2>&1 && source <(kubectl completion zsh)
+command -v docker > /dev/null 2>&1 && source <(docker completion zsh)
