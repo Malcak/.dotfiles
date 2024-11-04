@@ -79,17 +79,23 @@ esac
 
 # User configuration
 ## zsh-history-substring-search
-# source /usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+if [ -f "/usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ]; then
+    source /usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+fi
 ## zsh-autosuggestions
-# export ZSH_AUTOSUGGEST_STRATEGY=(completion history match_prev_cmd)
-# source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [ -f "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+    export ZSH_AUTOSUGGEST_STRATEGY=(completion history match_prev_cmd)
+    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 ## zsh-syntax-highlighting
-# export HISTORY_SUBSTRING_SEARCH_FUZZY=true
-# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# bindkey '^[[A' history-substring-search-up
-# bindkey '^[[B' history-substring-search-down
-# bindkey -M vicmd 'k' history-substring-search-up
-# bindkey -M vicmd 'j' history-substring-search-down
+if [ -f "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    export HISTORY_SUBSTRING_SEARCH_FUZZY=true
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+    bindkey -M vicmd 'k' history-substring-search-up
+    bindkey -M vicmd 'j' history-substring-search-down
+fi
 
 # Alias definitions.
 if [ -f "$ZDOTDIR/.zaliases.zsh" ]; then
