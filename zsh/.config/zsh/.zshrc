@@ -92,6 +92,11 @@ esac
 # bindkey -M vicmd 'j' history-substring-search-down
 
 # Alias definitions.
-if [ -f "$ZDOTDIR/.zaliases" ]; then
-    source $ZDOTDIR/.zaliases
+if [ -f "$ZDOTDIR/.zaliases.zsh" ]; then
+    source $ZDOTDIR/.zaliases.zsh
+fi
+
+# Variables ans Secrets
+if [ -f "$ZDOTDIR/.zvariables.zsh" ]; then
+    source $ZDOTDIR/.zvariables.zsh
 fi
