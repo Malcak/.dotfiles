@@ -1,5 +1,5 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Add locations to PATH
+export PATH=/usr/local/bin:$PATH
 
 # Set command completions
 autoload -U +X compinit && compinit
