@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # Alias definitions.
 
 # enable color support of ls and also add handy aliases
@@ -33,9 +31,6 @@ alias batp='/bin/bat'
 alias gvm="$GOPATH/bin/g"
 alias nvm="$N_PREFIX/bin/n"
 alias pvm="$PYENV_ROOT/bin/pyenv"
-
-# docker aliases
-alias aws='docker run --rm -it -v ~/.devtools/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
 
 # kitty aliases
 alias kssh="kitty +kitten ssh"
