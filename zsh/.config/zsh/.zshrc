@@ -80,7 +80,12 @@ esac
 # User configuration
 ## zsh-history-substring-search
 if [ -f "/usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh" ]; then
+    export HISTORY_SUBSTRING_SEARCH_FUZZY=true
     source /usr/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+    bindkey -M vicmd 'k' history-substring-search-up
+    bindkey -M vicmd 'j' history-substring-search-down
 fi
 ## zsh-autosuggestions
 if [ -f "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
@@ -89,12 +94,7 @@ if [ -f "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
 fi
 ## zsh-syntax-highlighting
 if [ -f "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
-    export HISTORY_SUBSTRING_SEARCH_FUZZY=true
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    bindkey '^[[A' history-substring-search-up
-    bindkey '^[[B' history-substring-search-down
-    bindkey -M vicmd 'k' history-substring-search-up
-    bindkey -M vicmd 'j' history-substring-search-down
 fi
 
 # Alias definitions.
