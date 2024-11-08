@@ -106,3 +106,21 @@ fi
 if [ -f "$ZDOTDIR/.zvariables.zsh" ]; then
     source $ZDOTDIR/.zvariables.zsh
 fi
+
+# Enable natural text editing
+# Move to the beginning of the line. `ALT + LEFT ARROW`:
+bindkey "^[[1;3D" beginning-of-line
+# Move to the end of the line. `ALT + RIGHT ARROW`:
+bindkey "^[[1;3C" end-of-line
+# Move to the beginning of the previous word. `CTRL + LEFT ARROW`:
+bindkey "^[[1;5D" backward-word
+# Move to the beginning of the next word. `CTRL + RIGHT ARROW`:
+bindkey "^[[1;5C" forward-word
+# Delete the word behind the cursor. `CTRL + BACKSPACE`:
+bindkey "^H" backward-kill-word
+# Delete the next word after the cursor. `CTRL + DEL`:
+bindkey "^[[3;5~" kill-word
+# Delete the line behind the cursor. `ALT + BACKSPACE`:
+bindkey "^[^?" backward-kill-line
+# Delete the everything after the cursor. `ALT + BACKSPACE`:
+bindkey "^[[3;3~" kill-line
