@@ -122,5 +122,5 @@ bindkey "^H" backward-kill-word
 bindkey "^[[3;5~" kill-word
 # Delete the line behind the cursor. `ALT + BACKSPACE`:
 bindkey "^[^?" backward-kill-line
-# Delete the everything after the cursor. `ALT + BACKSPACE`:
+# Delete the everything after the cursor. `ALT + DEL`:
 bindkey "^[[3;3~" kill-line
