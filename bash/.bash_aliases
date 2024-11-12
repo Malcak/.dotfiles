@@ -16,6 +16,8 @@ fi
 
 # general aliases
 alias now='date -u "+%Y-%m-%dT%H-%M-%S%Z"'
+alias ff='fastfetch'
+alias diff='diff -u'
 
 # some more ls aliases
 alias ll='ls -Alvh --group-directories-first --dereference'
