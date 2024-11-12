@@ -27,11 +27,6 @@ alias tree='tree -I node_modules'
 alias bat='/bin/bat --paging=never'
 alias batp='/bin/bat'
 
-# some version manager aliases
-alias gvm="$GOPATH/bin/g"
-alias nvm="$N_PREFIX/bin/n"
-alias pvm="$PYENV_ROOT/bin/pyenv"
-
 # kitty aliases
 alias kssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
