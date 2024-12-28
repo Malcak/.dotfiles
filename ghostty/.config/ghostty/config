@@ -1,0 +1,23 @@
+# theme
+font-family = "Hack Nerd Font Mono"
+font-size = 16
+theme = malcak
+
+# shell integration
+shell-integration-features = no-cursor
+cursor-style = block
+
+# effects
+background-opacity = 1
+background-blur-radius = 0
+
+# window settings
+title = "Ghostty"
+window-height = 42
+window-width = 112
+window-padding-balance = true
+window-padding-x = 4
+window-padding-y = 4,1
+
+# quick terminal
+quick-terminal-position = top
