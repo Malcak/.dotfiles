@@ -16,6 +16,7 @@ title = "Ghostty"
 window-height = 42
 window-width = 112
 window-padding-balance = true
+window-padding-color = extend
 window-padding-x = 4
 window-padding-y = 4,1
 
