@@ -97,6 +97,12 @@ if [ -f "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+## atuin history
+if [ -f "$HOME/.atuin/bin/env" ]; then
+    source "$HOME/.atuin/bin/env"
+    eval "$(atuin init zsh --disable-up-arrow)"
+fi
+
 # Alias definitions.
 if [ -f "$ZDOTDIR/.zaliases.zsh" ]; then
     source $ZDOTDIR/.zaliases.zsh
