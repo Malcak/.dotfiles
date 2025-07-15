@@ -1,0 +1,29 @@
+# https://docs.warp.dev/appearance/custom-themes
+# cd ${XDG_DATA_HOME:-$HOME/.local/share}/warp-terminal/
+# git clone https://github.com/warpdotdev/themes.git
+# ln -s ~/.dotfiles/config/warp-terminal/themes/standard/malcak.yaml ~/.local/share/warp-terminal/themes/standard/malcak.yaml
+
+name: "Malcak"
+accent: "#61afef" # Accent color for UI elements
+background: "#000000" # Terminal background color
+details: darker # Whether the theme is lighter or darker.
+foreground: "#dcdfe4" # The foreground color.
+terminal_colors: # Ansi escape colors.
+  normal:
+    black: "#383a42"
+    blue: "#61afef"
+    cyan: "#56b6c2"
+    green: "#98c379"
+    magenta: "#c678dd"
+    red: "#e06c75"
+    white: "#fafafa"
+    yellow: "#e5c07b"
+  bright:
+    black: "#282c34"
+    blue: "#0184bc"
+    cyan: "#0997b3"
+    green: "#50a14f"
+    magenta: "#a626a4"
+    red: "#e45649"
+    white: "#dcdfe4"
+    yellow: "#c18401"
