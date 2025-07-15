@@ -1,20 +1,26 @@
 [user]
 	email = malcakx@gmail.com
 	name = malcak
+
 [init]
 	defaultBranch = main
+
 [pull]
 	rebase = true
+
 [fetch]
 	prune = true
 
+# diff-so-fancy prefered colors
 [color]
 	ui = true
+
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+
 [color "diff"]
 	meta = 11
 	frag = magenta bold
@@ -23,3 +29,10 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+
+# diff so fancy config
+[core]
+  pager = diff-so-fancy | less --tabs=4 -RFX
+
+[interactive]
+  diffFilter = diff-so-fancy --patch
