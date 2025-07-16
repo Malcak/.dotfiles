@@ -1,0 +1,141 @@
+format = """
+$os\
+$username\
+$directory\
+$time\
+([ ](black)$all)\
+$line_break\
+[ │](fg:black)\
+$line_break\
+[ ╰](fg:black)\
+$character
+"""
+
+add_newline = true
+
+[username]
+show_always = true
+style_user = "bg:bright-black fg:white"
+# format = '[ @ ]($style bg:black)[ $user ]($style) '
+format = '[ $user ]($style fg:bright-white) '
+disabled = false
+
+[directory]
+style = "bg:bright-black fg:white"
+format = "[  ](bg:black fg:yellow)[ $path ]($style fg:bright-white) "
+truncation_length = 3
+truncation_symbol = "…/"
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:bright-black fg:white"
+format = '[  ]($style bg:black)[ $time ]($style fg:bright-white) '
+
+[character]
+error_symbol = "[→](red)"
+success_symbol = "[→](black)"
+
+[git_branch]
+symbol = ""
+style = "bg:bright-black fg:white"
+format = '[ $symbol ](bg:black fg:red)[ $branch ]($style) '
+
+[git_status]
+style = "bg:bright-black fg:white"
+format = '([ 󰊢 ](bg:black fg:red)[ $all_status$ahead_behind ]($style) )'
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
+
+[docker_context]
+symbol = ""
+style = "bg:bright-black fg:white"
+format = '[ $symbol ](bg:black fg:blue)[( $version )]($style) '
+
+[terraform]
+symbol = "󱁢"
+style = "bg:bright-black fg:white"
+format = '[ $symbol ](bg:black fg:purple)[( $version )]($style) '
+
+[package]
+symbol = "󰏗"
+style = "bg:bright-black fg:white"
+format = '[ $symbol ](bg:black fg:#BC9579)[( $version )]($style) '
+
+[python]
+symbol = ""
+style = "bg:bright-black fg:white"
+format = '[ $symbol ](bg:black fg:yellow)[( $version )]($style)([ $virtualenv ](bg:black fg:green))'
+
+[rust]
+symbol = "󱘗"
+style = "bg:bright-black fg:white"
+format = '[ $symbol ](bg:black fg:BC9579)[( $version )]($style) '
+
+[lua]
+symbol = ""
+style = "bg:bright-black fg:white"
+format = '[ $symbol ](bg:black fg:blue)[( $version )]($style) '
+
+[golang]
+symbol = ""
+style = "bg:bright-black fg:white"
+format = '[ $symbol ](bg:black fg:blue)[( $version )]($style) '
+
+[vagrant]
+disabled = true
+
+[os]
+disabled = false
+style = "bg:black fg:white"
+format = '[ $symbol ]($style)'
+
+[os.symbols]
+Alpaquita = ""
+Alpine = ""
+AlmaLinux = ""
+Amazon = ""
+Android = ""
+Arch = ""
+Artix = ""
+CachyOS = ""
+CentOS = ""
+Debian = ""
+DragonFly = ""
+Emscripten = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Garuda = "󰛓"
+Gentoo = ""
+HardenedBSD = "󰞌"
+Illumos = "󰈸"
+Kali = ""
+Linux = ""
+Mabox = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+MidnightBSD = ""
+Mint = ""
+NetBSD = ""
+NixOS = ""
+Nobara = ""
+OpenBSD = "󰈺"
+openSUSE = ""
+OracleLinux = "󰌷"
+Pop = ""
+Raspbian = ""
+Redhat = ""
+RedHatEnterprise = ""
+RockyLinux = ""
+Redox = "󰀘"
+Solus = "󰠳"
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Void = ""
+Windows = "󰍲"
