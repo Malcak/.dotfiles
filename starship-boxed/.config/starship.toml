@@ -58,7 +58,7 @@ format = '[ $symbol ](bg:black fg:blue)[( $context )]($style) '
 [terraform]
 symbol = "󱁢"
 style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:purple)[( $version )]($style) '
+format = '[ $symbol ](bg:black fg:purple)[( $version )]($style)([ $workspace ](bg:black fg:purple bold inverted))'
 
 [package]
 symbol = "󰏗"
@@ -68,7 +68,7 @@ format = '[ $symbol ](bg:black fg:#BC9579)[( $version )]($style) '
 [python]
 symbol = ""
 style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:yellow)[( $version )]($style)([ $virtualenv ](bg:black fg:green))'
+format = '[ $symbol ](bg:black fg:yellow)[( $version )]($style)([ $virtualenv ](bg:black fg:green bold inverted))'
 
 [rust]
 symbol = "󱘗"
