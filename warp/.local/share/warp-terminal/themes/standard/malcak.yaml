@@ -9,7 +9,7 @@ details: darker # Whether the theme is lighter or darker.
 foreground: '#dcdfe4' # The foreground color.
 terminal_colors: # Ansi escape colors.
   normal:
-    black: '#383a42'
+    black: '#404040'
     blue: '#61afef'
     cyan: '#56b6c2'
     green: '#98c379'
@@ -18,11 +18,11 @@ terminal_colors: # Ansi escape colors.
     white: '#fafafa'
     yellow: '#e5c07b'
   bright:
-    black: '#282c34'
+    black: '#2d2d2d'
     blue: '#0184bc'
     cyan: '#0997b3'
     green: '#50a14f'
     magenta: '#a626a4'
     red: '#e45649'
-    white: '#dcdfe4'
+    white: '#8c8c8c'
     yellow: '#c18401'
