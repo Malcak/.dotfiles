@@ -13,8 +13,3 @@ fi
 
 # Added by rustup install (see https://rustup.rs/)
 export RUSTUP_HOME="$HOME/.rustup"; export CARGO_HOME="$HOME/.cargo"; export PATH="$HOME/.cargo/bin:$PATH";
-
-# Added by kubectl install
-# add kubectl completions
-command -v kubectl > /dev/null 2>&1 && source <(kubectl completion zsh)
-command -v docker > /dev/null 2>&1 && source <(docker completion zsh)
