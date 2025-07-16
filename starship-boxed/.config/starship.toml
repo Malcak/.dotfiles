@@ -53,7 +53,7 @@ deleted = "x"
 [docker_context]
 symbol = ""
 style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:blue)[( $version )]($style) '
+format = '[ $symbol ](bg:black fg:blue)[( $context )]($style) '
 
 [terraform]
 symbol = "󱁢"
