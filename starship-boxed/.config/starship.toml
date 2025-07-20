@@ -7,7 +7,7 @@ $time\
 $line_break\
 [ │](fg:black)\
 $line_break\
-[ ╰](fg:black)\
+[ ╰─](fg:black)\
 $character
 """
 
@@ -33,8 +33,8 @@ style = "bg:bright-black fg:white"
 format = '[  ]($style bg:black)[ $time ]($style fg:bright-white) '
 
 [character]
-error_symbol = "[→](red)"
-success_symbol = "[→](black)"
+error_symbol = "[▶](red)"
+success_symbol = "[▶](black)"
 
 [git_branch]
 symbol = ""
