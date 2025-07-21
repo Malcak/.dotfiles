@@ -3,7 +3,8 @@ $os\
 $username\
 $directory\
 $time\
-([ ](black)$all)\
+$cmd_duration\
+([](black) $all)\
 $line_break\
 [ │](fg:black)\
 $line_break\
@@ -32,6 +33,12 @@ time_format = "%R"
 style = "bg:bright-black fg:white"
 format = '[  ]($style bg:black)[ $time ]($style fg:bright-white) '
 
+[cmd_duration]
+min_time = 500
+show_milliseconds = true
+style = "bg:bright-black fg:white"
+format = '[ 󰔚 ]($style bg:black)[ $duration ]($style fg:bright-white) '
+
 [character]
 error_symbol = "[▶](red)"
 success_symbol = "[▶](black)"
@@ -51,32 +58,32 @@ renamed = "r"
 deleted = "x"
 
 [docker_context]
-symbol = ""
+symbol = "󰡨"
 style = "bg:bright-black fg:white"
 format = '[ $symbol ](bg:black fg:blue)[( $context )]($style) '
 
 [terraform]
 symbol = "󱁢"
 style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:purple)[( $version )]($style)([ $workspace ](bg:black fg:purple bold inverted))'
+format = '[ $symbol ](bg:black fg:purple)[( $version )]($style)([ $workspace ](bg:black fg:purple bold inverted)) '
 
 [package]
-symbol = "󰏗"
+symbol = "󰏖"
 style = "bg:bright-black fg:white"
 format = '[ $symbol ](bg:black fg:#BC9579)[( $version )]($style) '
 
 [python]
-symbol = ""
+symbol = "󰌠"
 style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:yellow)[( $version )]($style)([ $virtualenv ](bg:black fg:green bold inverted))'
+format = '[ $symbol ](bg:black fg:yellow)[( $version )]($style)([ $virtualenv ](bg:black fg:green bold inverted)) '
 
 [rust]
 symbol = "󱘗"
 style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:BC9579)[( $version )]($style) '
+format = '[ $symbol ](bg:black fg:#BC9579)[( $version )]($style) '
 
 [lua]
-symbol = ""
+symbol = "󰢱"
 style = "bg:bright-black fg:white"
 format = '[ $symbol ](bg:black fg:blue)[( $version )]($style) '
 
