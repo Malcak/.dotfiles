@@ -9,7 +9,7 @@ cursor-style = block
 
 # effects
 background-opacity = 1
-background-blur-radius = 0
+background-blur = false
 
 # window settings
 title = "Ghostty"

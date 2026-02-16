@@ -19,3 +19,4 @@ foreground = dcdfe4
 cursor-color = dcdfe4
 selection-background = 626880
 selection-foreground = c6d0f5
+split-divider-color = 404040
