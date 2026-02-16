@@ -1,0 +1,26 @@
+# theme
+font-family = "FiraMono Nerd Font Mono"
+font-size = 20
+theme = malcak
+
+# shell integration
+shell-integration-features = no-cursor
+cursor-style = block
+
+# effects
+background-opacity = 0.8
+background-blur-radius = 20
+
+# window settings
+title = "Ghostty"
+window-height = 42
+window-width = 128
+window-padding-balance = true
+window-padding-color = extend
+window-padding-x = 8
+window-padding-y = 0
+
+macos-titlebar-style = "tabs"
+
+# quick terminal
+quick-terminal-position = top
