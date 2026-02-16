@@ -4,6 +4,7 @@
 # If running zsh
 if [ -n "$ZSH_VERSION" ]; then
     export ZDOTDIR="$HOME/.config/zsh";
+    export ZCACHE="$HOME/.cache/zsh";
     mkdir -p "$HOME/.cache/zsh"
     mkdir -p "$ZDOTDIR"
 fi

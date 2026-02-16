@@ -25,7 +25,7 @@ zstyle ':completion:*' completer _extensions _complete _approximate
 
 # Use cache for commands using cache
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$ZDOTDIR/.zcompcache"
+zstyle ':completion:*' cache-path "$ZCACHE/.zcompcache"
 
 # Allow you to select in a menu
 zstyle ':completion:*' menu select 
@@ -53,6 +53,7 @@ zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-d
 
 # Required for completion to be in good groups (named after the tags)
 zstyle ':completion:*' group-name ''
+
 zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions commands
 
 # See ZSHCOMPWID "completion matching control"
