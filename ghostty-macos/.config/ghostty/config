@@ -5,6 +5,7 @@ theme = malcak
 
 # shell integration
 shell-integration-features = no-cursor
+shell-integration-features = ssh-terminfo
 cursor-style = block
 
 # effects
