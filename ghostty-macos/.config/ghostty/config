@@ -2,11 +2,11 @@
 font-family = "FiraMono Nerd Font Mono"
 font-size = 20
 theme = malcak
+cursor-style = bar
 
 # shell integration
 shell-integration-features = no-cursor
 shell-integration-features = ssh-terminfo
-cursor-style = block
 
 # effects
 background-opacity = 0.8
