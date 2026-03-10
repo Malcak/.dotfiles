@@ -17,6 +17,9 @@ fi
 # Added by rustup install (see https://rustup.rs/)
 export RUSTUP_HOME="$HOME/.rustup"; export CARGO_HOME="$HOME/.cargo"; export PATH="$HOME/.cargo/bin:$PATH";
 
+# Added by obsidian CLI
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
 # Added by homebrew install
 if command -v /opt/homebrew/bin/brew &> /dev/null; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
