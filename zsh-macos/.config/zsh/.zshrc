@@ -17,6 +17,9 @@ export HISTFILE="$ZCACHE/.zhistory"
 export HISTSIZE=16384
 export SAVEHIST=16384
 
+# Set word characters for better command line editing
+export WORDCHARS=""
+
 # Starship prompt
 if command -v starship &> /dev/null; then
     eval "$(starship init zsh)"
