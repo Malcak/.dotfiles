@@ -1,5 +1,6 @@
-# Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
+
+palette = 'malcak'
 
 format = """
 $os\
@@ -17,91 +18,128 @@ $character
 
 add_newline = true
 
+[palettes.malcak]
+icon_bg = 'black'
+text_bg = 'bright-black'
+text_fg = 'white'
+
 [username]
 show_always = true
-style_user = "bg:bright-black fg:white"
-# format = '[ @ ]($style bg:black)[ $user ]($style) '
+style_user = "bg:text_bg fg:text_fg"
+# format = '[ @ ]($style bg:icon_bg)[ $user ]($style) '
 format = '[ $user ]($style fg:bright-white) '
 disabled = false
 
 [directory]
-style = "bg:bright-black fg:white"
-format = "[  ](bg:black fg:yellow)[ $path ]($style fg:bright-white) "
+style = "bg:text_bg fg:text_fg"
+format = "[  ](bg:icon_bg fg:yellow)[ $path ]($style fg:bright-white) "
 truncation_length = 3
 truncation_symbol = "…/"
 
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:bright-black fg:white"
-format = '[  ]($style bg:black)[ $time ]($style fg:bright-white) '
+style = "bg:text_bg fg:text_fg"
+format = '[  ]($style bg:icon_bg)[ $time ]($style fg:bright-white) '
 
 [cmd_duration]
 min_time = 500
 show_milliseconds = true
-style = "bg:bright-black fg:white"
-format = '[ 󰔚 ]($style bg:black)[ $duration ]($style fg:bright-white) '
+style = "bg:text_bg fg:text_fg"
+format = '[ 󰔚 ]($style bg:icon_bg)[ $duration ]($style fg:bright-white) '
 
 [character]
 error_symbol = "[▶](red)"
 success_symbol = "[▶](black)"
 
 [git_branch]
-symbol = ""
-style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:red)[ $branch ]($style) '
+symbol = ""
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:red)[ $branch ]($style) '
 
 [git_status]
-style = "bg:bright-black fg:white"
-format = '([ 󰊢 ](bg:black fg:red)[ $all_status$ahead_behind ]($style) )'
+style = "bg:text_bg fg:text_fg"
+format = '([  ](bg:icon_bg fg:red)[ $all_status$ahead_behind ]($style) )'
+conflicted = ""
 ahead = ">"
 behind = "<"
 diverged = "<>"
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = "+"
 renamed = "r"
 deleted = "x"
 
+[git_state]
+style = "bg:text_bg fg:text_fg"
+format = '([  ](bg:icon_bg fg:red)[ $state( $progress_current/$progress_total) ]($style) )'
+
 [docker_context]
 symbol = "󰡨"
-style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:blue)[( $context )]($style) '
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:blue)[( $context )]($style) '
 
 [terraform]
 symbol = "󱁢"
-style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:purple)[( $version )]($style)([ $workspace ](bg:black fg:purple bold inverted)) '
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:purple)[( $version )]($style)([ $workspace ](bg:icon_bg fg:purple bold inverted)) '
 
 [package]
-symbol = "󰏖"
-style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:#BC9579)[( $version )]($style) '
+symbol = ""
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:#BC9579)[( $version )]($style) '
 
 [python]
 symbol = "󰌠"
-style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:yellow)[( $version )]($style)([ $virtualenv ](bg:black fg:green bold inverted)) '
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:yellow)[( $version )]($style)([ $virtualenv ](bg:icon_bg fg:green bold inverted)) '
 
 [rust]
 symbol = "󱘗"
-style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:#BC9579)[( $version )]($style) '
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:#BC9579)[( $version )]($style) '
 
 [lua]
 symbol = "󰢱"
-style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:blue)[( $version )]($style) '
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:blue)[( $version )]($style) '
 
 [golang]
 symbol = ""
-style = "bg:bright-black fg:white"
-format = '[ $symbol ](bg:black fg:blue)[( $version )]($style) '
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:blue)[( $version )]($style) '
 
-[vagrant]
-disabled = true
+[ruby]
+symbol = "󰴭"
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:red)[( $version )]($style) '
+
+[java]
+symbol = "󰬷"
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:red)[( $version )]($style) '
+
+[zig]
+symbol = "󱐋"
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:yellow)[( $version )]($style) '
+
+[kubernetes]
+symbol = "󱃾"
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:blue)[( $context )]($style)([ $namespace ](bg:icon_bg fg:cyan bold inverted)) '
+
+[helm]
+symbol = "⎈"
+style = "bg:text_bg fg:text_fg"
+format = '[ $symbol ](bg:icon_bg fg:blue)[( $version )]($style) '
 
 [os]
 disabled = false
-style = "bg:black fg:white"
-format = '[ $symbol ]($style)'
+style = "bg:icon_bg fg:text_fg"
+# format = '[ $symbol ]($style)'
+format = '[ @ ]($style)'
 
 [os.symbols]
 Alpaquita = ""
@@ -149,3 +187,24 @@ Ubuntu = ""
 Unknown = ""
 Void = ""
 Windows = "󰍲"
+
+[vagrant]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[bun]
+disabled = true
+
+[deno]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[azure]
+disabled = true
