@@ -1,18 +1,32 @@
-# theme
+# =====
+# style theme
+# =====
+
 font-family = "FiraMono Nerd Font Mono"
 font-size = 20
 theme = malcak
-cursor-style = bar
 
+# =================
 # shell integration
-shell-integration-features = no-cursor
-shell-integration-features = ssh-terminfo
+# =================
 
+# With `ssh-terminfo` Ghostty will install its terminfo on remote hosts and use
+# `xterm-ghostty` as TERM, falling back to `xterm-256color` with environment
+# variables if terminfo installation fails.
+shell-integration-features = ssh-terminfo
+shell-integration-features = ssh-env
+
+# =======
 # effects
+# =======
+
 background-opacity = 0.8
 background-blur = true
 
-# window settings
+# ======
+# window
+# ======
+
 title = "Ghostty"
 window-height = 42
 window-width = 128
@@ -21,7 +35,16 @@ window-padding-color = extend
 window-padding-x = 8
 window-padding-y = 0
 
+# =====
+# macos
+# =====
+
 macos-titlebar-style = "tabs"
 
+# ==============
 # quick terminal
-quick-terminal-position = top
+# ==============
+
+quick-terminal-position = bottom
+quick-terminal-size = 33%
+keybind = global:cmd+backquote=toggle_quick_terminal
