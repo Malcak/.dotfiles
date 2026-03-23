@@ -86,3 +86,7 @@ if command -v /opt/homebrew/bin/brew &> /dev/null; then
     # grep
     export PATH="${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin:$PATH"
 fi
+
+# Workaround to fix Ansible in MacOS as control node.
+# https://docs.ansible.com/projects/ansible/latest/reference_appendices/faq.html#running-on-macos-as-a-control-node
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES 
