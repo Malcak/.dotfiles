@@ -17,6 +17,9 @@ fi
 # Added by rustup install (see https://rustup.rs/)
 export RUSTUP_HOME="$HOME/.rustup"; export CARGO_HOME="$HOME/.cargo"; export PATH="$HOME/.cargo/bin:$PATH";
 
+# Added by golang install
+export GOPATH="$HOME/.go"; export GOBIN="$GOPATH/bin"
+
 # Added by obsidian CLI
 export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 
