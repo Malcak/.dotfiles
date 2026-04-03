@@ -16,7 +16,6 @@ fi
 alias now='date -u "+%Y-%m-%dT%H-%M-%S%Z"'
 alias ff='fastfetch'
 alias diff='diff -u'
-alias k9s='k9s --readonly -n default'
 
 # some more ls aliases
 alias ll='gls -Alvh --group-directories-first --dereference'
@@ -31,3 +30,7 @@ alias batp='/bin/bat'
 
 # terraform aliases
 alias tfswitch='tfswitch -b "$HOME/.local/bin/terraform"'
+
+# k8s aliases
+command -v kubecolor >/dev/null 2>&1 && alias kubectl='kubecolor'
+alias k9s='k9s --readonly -n default'
