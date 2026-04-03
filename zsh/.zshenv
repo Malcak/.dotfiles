@@ -5,7 +5,7 @@
 if [ -n "$ZSH_VERSION" ]; then
     export ZDOTDIR="$HOME/.config/zsh";
     export ZCACHE="$HOME/.cache/zsh";
-    mkdir -p "$HOME/.cache/zsh"
+    mkdir -p "$ZCACHE"
     mkdir -p "$ZDOTDIR"
 fi
 
@@ -16,3 +16,6 @@ fi
 
 # Added by rustup install (see https://rustup.rs/)
 export RUSTUP_HOME="$HOME/.rustup"; export CARGO_HOME="$HOME/.cargo"; export PATH="$HOME/.cargo/bin:$PATH";
+
+# Added by golang install
+export GOPATH="$HOME/.go"; export GOBIN="$GOPATH/bin"

@@ -8,6 +8,13 @@ autoload -U compinit; compinit
 # autoload -U +X bashcompinit
 _comp_options+=(globdots) # With hidden files
 
+# completion for k8s alias
+# Only bind kubecolor to kubectl's completion when compinit has already
+# registered kubectl as a completion service in this shell.
+if command -v kubecolor >/dev/null 2>&1 && (( $+_comps[kubectl] )); then
+    compdef kubecolor=kubectl
+fi
+
 # Options
 
 setopt MENU_COMPLETE        # Automatically highlight first element of completion menu
