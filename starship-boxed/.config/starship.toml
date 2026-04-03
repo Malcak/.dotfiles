@@ -2,13 +2,28 @@
 
 palette = 'malcak'
 
+# os symbols are mainly from nf-linux-*
+# hostname, username, directory, time, duration symbols are from nf-oct-*
+# git symbols are primarily from nf-cod-*
+# programming languages are primarily from nf-md-language-*, nf-dev-*
+# other symbols are from nf-dev-*
+
 format = """
 $os\
 $username\
+$hostname\
 $directory\
 $time\
 $cmd_duration\
-([](black) $all)\
+([ ](black)\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$kubernetes\
+$helm\
+$all)\
 $line_break\
 [ │](fg:black)\
 $line_break\
@@ -16,18 +31,55 @@ $line_break\
 $character
 """
 
+command_timeout = 1500
 add_newline = true
 
 [palettes.malcak]
-icon_bg = 'black'
-text_bg = 'bright-black'
-text_fg = 'white'
+black = '#404040'
+red = '#e06c75'
+green = '#98c379'
+yellow = '#e5c07b'
+blue = '#61afef'
+purple = '#c678dd'
+cyan = '#56b6c2'
+white = '#fafafa'
+orange = '#fe8019'
+bright-black = '#2d2d2d'
+bright-red = '#e45649'
+bright-green = '#50a14f'
+bright-yellow = '#c18401'
+bright-blue = '#0184bc'
+bright-purple = '#a626a4'
+bright-cyan = '#0997b3'
+bright-white = '#8c8c8c'
+bright-orange = '#af3a03'
+
+icon_bg = '#404040'
+icon_fg = '#8c8c8c'
+text_bg = '#2d2d2d'
+text_fg = '#fafafa'
+
+sep = '#363636'
+
+[os]
+symbols = { Debian = "", Fedora = "", Macos = "", Raspbian = "", Unknown = "?", Windows = "" }
+style = "bg:icon_bg fg:text_fg"
+format = '[ $symbol ]($style)[ $name ](bg:text_bg fg:text_fg) '
+# format = '[ @ ]($style)'
+disabled = true
+
+[hostname]
+ssh_only = true
+ssh_symbol = ""
+style = "bg:text_bg fg:text_fg"
+format = "[ $ssh_symbol ](bg:icon_bg fg:cyan)[ $hostname ](bg:icon_bg fg:cyan bold inverted) "
 
 [username]
 show_always = true
 style_user = "bg:text_bg fg:text_fg"
-# format = '[ @ ]($style bg:icon_bg)[ $user ]($style) '
-format = '[ $user ]($style fg:bright-white) '
+format = '[ @ ]($style bg:icon_bg)[ $user ]($style fg:bright-white) '
+# format = '[  ]($style bg:icon_bg)[ $user ]($style fg:bright-white) '
+# format = '[ $user ]($style fg:bright-white) '
 disabled = false
 
 [directory]
@@ -46,7 +98,7 @@ format = '[  ]($style bg:icon_bg)[ $time ]($style fg:bright-white) '
 min_time = 500
 show_milliseconds = true
 style = "bg:text_bg fg:text_fg"
-format = '[ 󰔚 ]($style bg:icon_bg)[ $duration ]($style fg:bright-white) '
+format = '[  ]($style bg:icon_bg)[ $duration ]($style fg:bright-white) '
 
 [character]
 error_symbol = "[▶](red)"
@@ -73,32 +125,22 @@ deleted = "x"
 
 [git_state]
 style = "bg:text_bg fg:text_fg"
-format = '([  ](bg:icon_bg fg:red)[ $state( $progress_current/$progress_total) ]($style) )'
-
-[docker_context]
-symbol = "󰡨"
-style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:blue)[( $context )]($style) '
+format = '([  ](bg:icon_bg fg:red)[ $state($progress_current/$progress_total) ]($style) )'
 
 [terraform]
 symbol = "󱁢"
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:purple)[( $version )]($style)([ $workspace ](bg:icon_bg fg:purple bold inverted)) '
 
-[package]
-symbol = ""
-style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:#BC9579)[( $version )]($style) '
-
 [python]
 symbol = "󰌠"
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:yellow)[( $version )]($style)([ $virtualenv ](bg:icon_bg fg:green bold inverted)) '
+format = '[ $symbol ](bg:icon_bg fg:green)[( $version )]($style)([ $virtualenv ](bg:icon_bg fg:green bold inverted)) '
 
 [rust]
-symbol = "󱘗"
+symbol = ""
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:#BC9579)[( $version )]($style) '
+format = '[ $symbol ](bg:icon_bg fg:orange)[( $version )]($style) '
 
 [lua]
 symbol = "󰢱"
@@ -106,6 +148,7 @@ style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:blue)[( $version )]($style) '
 
 [golang]
+# symbol from nf-seti-go
 symbol = ""
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:blue)[( $version )]($style) '
@@ -121,72 +164,29 @@ style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:red)[( $version )]($style) '
 
 [zig]
-symbol = "󱐋"
+symbol = ""
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:yellow)[( $version )]($style) '
 
 [kubernetes]
-symbol = "󱃾"
+detect_files = ['helmfile.yaml', 'Chart.yaml', 'chart.yaml', 'config']
+symbol = ""
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:blue)[( $context )]($style)([ $namespace ](bg:icon_bg fg:cyan bold inverted)) '
+format = '[ $symbol ](bg:icon_bg fg:blue)[( $context )]($style)([ $namespace ](bg:icon_bg fg:blue bold inverted)) '
+disabled = false
 
 [helm]
-symbol = "⎈"
+detect_files = ['helmfile.yaml', 'Chart.yaml', 'chart.yaml', 'config']
+symbol = ""
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:blue)[( $version )]($style) '
-
-[os]
+format = '[ $symbol ](bg:icon_bg fg:bright-blue)[( $version )]($style) '
 disabled = false
-style = "bg:icon_bg fg:text_fg"
-# format = '[ $symbol ]($style)'
-format = '[ @ ]($style)'
 
-[os.symbols]
-Alpaquita = ""
-Alpine = ""
-AlmaLinux = ""
-Amazon = ""
-Android = ""
-Arch = ""
-Artix = ""
-CachyOS = ""
-CentOS = ""
-Debian = ""
-DragonFly = ""
-Emscripten = ""
-EndeavourOS = ""
-Fedora = ""
-FreeBSD = ""
-Garuda = "󰛓"
-Gentoo = ""
-HardenedBSD = "󰞌"
-Illumos = "󰈸"
-Kali = ""
-Linux = ""
-Mabox = ""
-Macos = ""
-Manjaro = ""
-Mariner = ""
-MidnightBSD = ""
-Mint = ""
-NetBSD = ""
-NixOS = ""
-Nobara = ""
-OpenBSD = "󰈺"
-openSUSE = ""
-OracleLinux = "󰌷"
-Pop = ""
-Raspbian = ""
-Redhat = ""
-RedHatEnterprise = ""
-RockyLinux = ""
-Redox = "󰀘"
-Solus = "󰠳"
-SUSE = ""
-Ubuntu = ""
-Unknown = ""
-Void = ""
-Windows = "󰍲"
+[package]
+disabled = true
+
+[docker_context]
+disabled = true
 
 [vagrant]
 disabled = true
