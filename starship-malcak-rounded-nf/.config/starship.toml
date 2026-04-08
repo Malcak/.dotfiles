@@ -65,17 +65,17 @@ sep = '#363636'
 disabled = true
 symbols = { Debian = "", Fedora = "", Macos = "", Raspbian = "", Unknown = "?", Windows = "" }
 style = "bg:text_bg fg:text_fg dimmed"
-format = '[ $symbol ](bg:icon_bg fg:text_fg bold)[ $name ]($style) '
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:text_fg bold)[[](bg:text_bg fg:icon_bg) $name]($style)[](fg:prev_bg) '
 
 [hostname]
 ssh_only = true
 style = "bg:cyan fg:icon_bg"
-format = "[ @ ](bg:icon_bg fg:cyan bold)[ $hostname ]($style bold) "
+format = "[](fg:icon_bg)[@](bg:icon_bg fg:cyan bold)[[](bg:cyan fg:icon_bg) $hostname]($style bold)[](fg:prev_bg) "
 
 [username]
 show_always = true
 style_user = "bg:text_bg fg:text_fg dimmed"
-format = '[  ](bg:icon_bg fg:text_fg bold)[ $user ]($style) '
+format = '[](fg:icon_bg)[](bg:icon_bg fg:text_fg bold)[[](bg:text_bg fg:icon_bg) $user]($style)[](fg:prev_bg) '
 
 [directory]
 read_only = ":ro"
@@ -83,8 +83,8 @@ read_only_style = "bg:text_bg fg:yellow italic"
 style = "bg:text_bg fg:text_fg dimmed"
 before_repo_root_style = "bg:text_bg fg:black"
 repo_root_style = "bg:text_bg fg:purple bold dimmed"
-repo_root_format = "[  ](bg:icon_bg fg:yellow bold)[ [$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) ]($style) "
-format = "[  ](bg:icon_bg fg:yellow bold)[ [$path]($style)[$read_only]($read_only_style) ]($style) "
+repo_root_format = "[](fg:icon_bg)[](bg:icon_bg fg:yellow bold)[[](bg:text_bg fg:icon_bg) [$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style)]($style)[](fg:prev_bg) "
+format = "[](fg:icon_bg)[](bg:icon_bg fg:yellow bold)[[](bg:text_bg fg:icon_bg) [$path]($style)[$read_only]($read_only_style)]($style)[](fg:prev_bg) "
 truncation_length = 4
 truncation_symbol = "…/"
 
@@ -92,36 +92,36 @@ truncation_symbol = "…/"
 disabled = false
 # https://docs.rs/chrono/0.4.7/chrono/format/strftime/index.html
 # time_format = "%F %R" # 2001-07-08 00:34
-time_format = "%a %R"                                          # Sun 00:34
+time_format = "%a %R"                                                                                               # Sun 00:34
 style = "bg:text_bg fg:text_fg dimmed"
-format = '[  ](bg:icon_bg fg:text_fg bold)[ $time ]($style) '
+format = '[](fg:icon_bg)[](bg:icon_bg fg:text_fg bold)[[](bg:text_bg fg:icon_bg) $time]($style)[](fg:prev_bg) '
 
 [cmd_duration]
 min_time = 500
 show_milliseconds = true
 style = "bg:text_bg fg:text_fg dimmed"
-format = '[  ](bg:icon_bg fg:text_fg bold)[ $duration ]($style) '
+format = '[](fg:icon_bg)[](bg:icon_bg fg:text_fg bold)[[](bg:text_bg fg:icon_bg) $duration]($style)[](fg:prev_bg) '
 
 [character]
-error_symbol = "[ \\$ ](red bold bg:icon_bg)"
-success_symbol = "[ \\$ ](green bold bg:icon_bg)"
+error_symbol = "[](fg:icon_bg)[\\$](red bold bg:icon_bg)[](fg:icon_bg)"
+success_symbol = "[](fg:icon_bg)[\\$](green bold bg:icon_bg)[](fg:icon_bg)"
 
 [git_branch]
 symbol = ""
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:red bold)[ $branch ]($style) '
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:red bold)[[](bg:text_bg fg:icon_bg) $branch]($style)[](fg:prev_bg) '
 
 [git_commit]
 style = "bg:text_bg fg:text_fg"
-format = "[  ](bg:icon_bg fg:red bold)[ $hash ]($style) "
+format = "[](fg:icon_bg)[](bg:icon_bg fg:red bold)[[](bg:text_bg fg:icon_bg) $hash]($style)[](fg:prev_bg) "
 
 [git_state]
 style = "bg:text_bg fg:text_fg"
-format = '[  ](bg:icon_bg fg:red bold)[ $state($progress_current/$progress_total) ]($style) '
+format = '[](fg:icon_bg)[](bg:icon_bg fg:red bold)[[](bg:text_bg fg:icon_bg) $state($progress_current/$progress_total)]($style)[](fg:prev_bg) '
 
 [git_status]
 style = "bg:text_bg fg:text_fg"
-format = '([  ](bg:icon_bg fg:red bold)[ $all_status$ahead_behind ]($style) )'
+format = '([](fg:icon_bg)[](bg:icon_bg fg:red bold)[[](bg:text_bg fg:icon_bg) $all_status$ahead_behind]($style)[](fg:prev_bg) )'
 conflicted = "[>=<](bg:text_bg fg:purple dimmed)"
 ahead = "[>](bg:text_bg fg:blue dimmed)"
 behind = "[<](bg:text_bg fg:yellow dimmed)"
@@ -136,52 +136,52 @@ deleted = "[x](bg:text_bg fg:bright-red dimmed)"
 [terraform]
 symbol = "󱁢"
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:purple bold)[( $version )]($style)[(  $workspace )](bg:icon_bg fg:purple bold inverted) '
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:purple bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](bg:purple fg:prev_bg)[ [◆](bg:purple fg:bright-purple bold) $workspace](bg:icon_bg fg:purple bold inverted)[](fg:purple) '
 
 [python]
 symbol = "󰌠"
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:green bold)[( $version )]($style)[( $virtualenv )](bg:icon_bg fg:green bold inverted) '
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:green bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](bg:green fg:prev_bg)[ [◆](bg:green fg:bright-green bold)( $virtualenv)](bg:icon_bg fg:green bold inverted)[](fg:green) '
 
 [rust]
 symbol = ""
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:orange bold)[( $version )]($style) '
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:orange bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
 
 [lua]
 symbol = "󰢱"
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:blue bold)[( $version )]($style) '
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:blue bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
 
 [golang]
 # symbol from nf-seti-go
 symbol = ""
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:blue bold)[( $version )]($style) '
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:blue bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
 
 [ruby]
 symbol = "󰴭"
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:red bold)[( $version )]($style) '
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:red bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
 
 [java]
 symbol = "󰬷"
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:red bold)[( $version )]($style) '
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:red bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
 
 [kubernetes]
 disabled = false
 detect_files = ['helmfile.yaml', 'Chart.yaml', 'chart.yaml', 'config']
 symbol = ""
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:blue bold)[( $context )]($style)[( $namespace )](bg:icon_bg fg:blue bold inverted) '
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:blue bold)[([](bg:text_bg fg:icon_bg) $context)]($style)[](bg:blue fg:prev_bg)[ [◆](bg:blue fg:bright-blue bold)( $namespace)](bg:icon_bg fg:blue bold inverted)[](fg:blue) '
 
 [helm]
 disabled = false
 detect_files = ['helmfile.yaml', 'Chart.yaml', 'chart.yaml']
 symbol = ""
 style = "bg:text_bg fg:text_fg"
-format = '[ $symbol ](bg:icon_bg fg:bright-blue bold)[( $version )]($style) '
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:bright-blue bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
 
 [package]
 disabled = true

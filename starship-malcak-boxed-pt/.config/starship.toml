@@ -2,12 +2,6 @@
 
 palette = 'malcak'
 
-# os symbols are mainly from nf-linux-*
-# hostname, username, directory, time, duration symbols are from nf-oct-*
-# git symbols are primarily from nf-cod-*
-# programming languages are primarily from nf-md-language-*, nf-dev-*
-# other symbols are from nf-dev-*
-
 format = """
 $character\
 $os\
@@ -63,7 +57,7 @@ sep = '#363636'
 
 [os]
 disabled = true
-symbols = { Debian = "", Fedora = "", Macos = "", Raspbian = "", Unknown = "?", Windows = "" }
+symbols = { Debian = "uname", Fedora = "uname", Macos = "uname", Raspbian = "uname", Unknown = "uname", Windows = "uname" }
 style = "bg:text_bg fg:text_fg dimmed"
 format = '[ $symbol ](bg:icon_bg fg:text_fg bold)[ $name ]($style) '
 
@@ -75,7 +69,7 @@ format = "[ @ ](bg:icon_bg fg:cyan bold)[ $hostname ]($style bold) "
 [username]
 show_always = true
 style_user = "bg:text_bg fg:text_fg dimmed"
-format = '[  ](bg:icon_bg fg:text_fg bold)[ $user ]($style) '
+format = '[ who ](bg:icon_bg fg:text_fg bold)[ $user ]($style) '
 
 [directory]
 read_only = ":ro"
@@ -83,8 +77,8 @@ read_only_style = "bg:text_bg fg:yellow italic"
 style = "bg:text_bg fg:text_fg dimmed"
 before_repo_root_style = "bg:text_bg fg:black"
 repo_root_style = "bg:text_bg fg:purple bold dimmed"
-repo_root_format = "[  ](bg:icon_bg fg:yellow bold)[ [$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) ]($style) "
-format = "[  ](bg:icon_bg fg:yellow bold)[ [$path]($style)[$read_only]($read_only_style) ]($style) "
+repo_root_format = "[ pwd ](bg:icon_bg fg:yellow bold)[ [$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) ]($style) "
+format = "[ pwd ](bg:icon_bg fg:yellow bold)[ [$path]($style)[$read_only]($read_only_style) ]($style) "
 truncation_length = 4
 truncation_symbol = "…/"
 
@@ -92,36 +86,36 @@ truncation_symbol = "…/"
 disabled = false
 # https://docs.rs/chrono/0.4.7/chrono/format/strftime/index.html
 # time_format = "%F %R" # 2001-07-08 00:34
-time_format = "%a %R"                                          # Sun 00:34
+time_format = "%a %R"                                             # Sun 00:34
 style = "bg:text_bg fg:text_fg dimmed"
-format = '[  ](bg:icon_bg fg:text_fg bold)[ $time ]($style) '
+format = '[ date ](bg:icon_bg fg:text_fg bold)[ $time ]($style) '
 
 [cmd_duration]
 min_time = 500
 show_milliseconds = true
 style = "bg:text_bg fg:text_fg dimmed"
-format = '[  ](bg:icon_bg fg:text_fg bold)[ $duration ]($style) '
+format = '[ time ](bg:icon_bg fg:text_fg bold)[ $duration ]($style) '
 
 [character]
 error_symbol = "[ \\$ ](red bold bg:icon_bg)"
 success_symbol = "[ \\$ ](green bold bg:icon_bg)"
 
 [git_branch]
-symbol = ""
+symbol = "gb"
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:red bold)[ $branch ]($style) '
 
 [git_commit]
 style = "bg:text_bg fg:text_fg"
-format = "[  ](bg:icon_bg fg:red bold)[ $hash ]($style) "
+format = "[ gc ](bg:icon_bg fg:red bold)[ $hash ]($style) "
 
 [git_state]
 style = "bg:text_bg fg:text_fg"
-format = '[  ](bg:icon_bg fg:red bold)[ $state($progress_current/$progress_total) ]($style) '
+format = '[ gopt ](bg:icon_bg fg:red bold)[ $state($progress_current/$progress_total) ]($style) '
 
 [git_status]
 style = "bg:text_bg fg:text_fg"
-format = '([  ](bg:icon_bg fg:red bold)[ $all_status$ahead_behind ]($style) )'
+format = '([ gst ](bg:icon_bg fg:red bold)[ $all_status$ahead_behind ]($style) )'
 conflicted = "[>=<](bg:text_bg fg:purple dimmed)"
 ahead = "[>](bg:text_bg fg:blue dimmed)"
 behind = "[<](bg:text_bg fg:yellow dimmed)"
@@ -134,52 +128,51 @@ renamed = "[r](bg:text_bg fg:bright-cyan dimmed)"
 deleted = "[x](bg:text_bg fg:bright-red dimmed)"
 
 [terraform]
-symbol = "󱁢"
+symbol = "tf"
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:purple bold)[( $version )]($style)[(  $workspace )](bg:icon_bg fg:purple bold inverted) '
 
 [python]
-symbol = "󰌠"
+symbol = "py"
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:green bold)[( $version )]($style)[( $virtualenv )](bg:icon_bg fg:green bold inverted) '
 
 [rust]
-symbol = ""
+symbol = "rs"
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:orange bold)[( $version )]($style) '
 
 [lua]
-symbol = "󰢱"
+symbol = "lua"
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:blue bold)[( $version )]($style) '
 
 [golang]
-# symbol from nf-seti-go
-symbol = ""
+symbol = "go"
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:blue bold)[( $version )]($style) '
 
 [ruby]
-symbol = "󰴭"
+symbol = "rb"
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:red bold)[( $version )]($style) '
 
 [java]
-symbol = "󰬷"
+symbol = "java"
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:red bold)[( $version )]($style) '
 
 [kubernetes]
 disabled = false
 detect_files = ['helmfile.yaml', 'Chart.yaml', 'chart.yaml', 'config']
-symbol = ""
+symbol = "k8s"
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:blue bold)[( $context )]($style)[( $namespace )](bg:icon_bg fg:blue bold inverted) '
 
 [helm]
 disabled = false
 detect_files = ['helmfile.yaml', 'Chart.yaml', 'chart.yaml']
-symbol = ""
+symbol = "helm"
 style = "bg:text_bg fg:text_fg"
 format = '[ $symbol ](bg:icon_bg fg:bright-blue bold)[( $version )]($style) '
 

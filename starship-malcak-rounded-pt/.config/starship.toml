@@ -1,0 +1,204 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+palette = 'malcak'
+
+format = """
+$character\
+$os\
+$username\
+$hostname\
+$directory\
+$time\
+$cmd_duration\
+([◆ ](black)\
+$git_status\
+$git_state\
+$git_branch\
+$git_commit\
+$git_metrics\
+$kubernetes\
+$helm\
+$all)\
+$line_break\
+[ │](fg:black)\
+$line_break\
+[ ╰─▶ ](fg:black)
+"""
+
+command_timeout = 1500
+add_newline = true
+
+[palettes.malcak]
+black = '#404040'
+red = '#e06c75'
+green = '#98c379'
+yellow = '#e5c07b'
+blue = '#61afef'
+purple = '#c678dd'
+cyan = '#56b6c2'
+white = '#fafafa'
+orange = '#fe8019'
+bright-black = '#2d2d2d'
+bright-red = '#e45649'
+bright-green = '#50a14f'
+bright-yellow = '#c18401'
+bright-blue = '#0184bc'
+bright-purple = '#a626a4'
+bright-cyan = '#0997b3'
+bright-white = '#8c8c8c'
+bright-orange = '#af3a03'
+
+icon_bg = '#404040'
+icon_fg = '#8c8c8c'
+text_bg = '#2d2d2d'
+text_fg = '#fafafa'
+
+sep = '#363636'
+
+[os]
+disabled = true
+symbols = { Debian = "uname", Fedora = "uname", Macos = "uname", Raspbian = "uname", Unknown = "uname", Windows = "uname" }
+style = "bg:text_bg fg:text_fg dimmed"
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:text_fg bold)[[](bg:text_bg fg:icon_bg) $name]($style)[](fg:prev_bg) '
+
+[hostname]
+ssh_only = true
+style = "bg:cyan fg:icon_bg"
+format = "[](fg:icon_bg)[@](bg:icon_bg fg:cyan bold)[[](bg:cyan fg:icon_bg) $hostname]($style bold)[](fg:prev_bg) "
+
+[username]
+show_always = true
+style_user = "bg:text_bg fg:text_fg dimmed"
+format = '[](fg:icon_bg)[who](bg:icon_bg fg:text_fg bold)[[](bg:text_bg fg:icon_bg) $user]($style)[](fg:prev_bg) '
+
+[directory]
+read_only = ":ro"
+read_only_style = "bg:text_bg fg:yellow italic"
+style = "bg:text_bg fg:text_fg dimmed"
+before_repo_root_style = "bg:text_bg fg:black"
+repo_root_style = "bg:text_bg fg:purple bold dimmed"
+repo_root_format = "[](fg:icon_bg)[pwd](bg:icon_bg fg:yellow bold)[[](bg:text_bg fg:icon_bg) [$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style)]($style)[](fg:prev_bg) "
+format = "[](fg:icon_bg)[pwd](bg:icon_bg fg:yellow bold)[[](bg:text_bg fg:icon_bg) [$path]($style)[$read_only]($read_only_style)]($style)[](fg:prev_bg) "
+truncation_length = 4
+truncation_symbol = "…/"
+
+[time]
+disabled = false
+# https://docs.rs/chrono/0.4.7/chrono/format/strftime/index.html
+# time_format = "%F %R" # 2001-07-08 00:34
+time_format = "%a %R"                                                                                                  # Sun 00:34
+style = "bg:text_bg fg:text_fg dimmed"
+format = '[](fg:icon_bg)[date](bg:icon_bg fg:text_fg bold)[[](bg:text_bg fg:icon_bg) $time]($style)[](fg:prev_bg) '
+
+[cmd_duration]
+min_time = 500
+show_milliseconds = true
+style = "bg:text_bg fg:text_fg dimmed"
+format = '[](fg:icon_bg)[time](bg:icon_bg fg:text_fg bold)[[](bg:text_bg fg:icon_bg) $duration]($style)[](fg:prev_bg) '
+
+[character]
+error_symbol = "[](fg:icon_bg)[\\$](red bold bg:icon_bg)[](fg:icon_bg)"
+success_symbol = "[](fg:icon_bg)[\\$](green bold bg:icon_bg)[](fg:icon_bg)"
+
+[git_branch]
+symbol = "gb"
+style = "bg:text_bg fg:text_fg"
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:red bold)[[](bg:text_bg fg:icon_bg) $branch]($style)[](fg:prev_bg) '
+
+[git_commit]
+style = "bg:text_bg fg:text_fg"
+format = "[](fg:icon_bg)[gc](bg:icon_bg fg:red bold)[[](bg:text_bg fg:icon_bg) $hash]($style)[](fg:prev_bg) "
+
+[git_state]
+style = "bg:text_bg fg:text_fg"
+format = '[](fg:icon_bg)[gopt](bg:icon_bg fg:red bold)[[](bg:text_bg fg:icon_bg) $state($progress_current/$progress_total)]($style)[](fg:prev_bg) '
+
+[git_status]
+style = "bg:text_bg fg:text_fg"
+format = '([](fg:icon_bg)[gst](bg:icon_bg fg:red bold)[[](bg:text_bg fg:icon_bg) $all_status$ahead_behind]($style)[](fg:prev_bg) )'
+conflicted = "[>=<](bg:text_bg fg:purple dimmed)"
+ahead = "[>](bg:text_bg fg:blue dimmed)"
+behind = "[<](bg:text_bg fg:yellow dimmed)"
+diverged = "[<>](bg:text_bg fg:orange dimmed)"
+untracked = "[?](bg:text_bg fg:bright-white dimmed)"
+stashed = "[$](bg:text_bg fg:bright-blue dimmed)"
+modified = "[!](bg:text_bg fg:bright-yellow dimmed)"
+staged = "[+](bg:text_bg fg:bright-green dimmed)"
+renamed = "[r](bg:text_bg fg:bright-cyan dimmed)"
+deleted = "[x](bg:text_bg fg:bright-red dimmed)"
+
+[terraform]
+symbol = "tf"
+style = "bg:text_bg fg:text_fg"
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:purple bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](bg:purple fg:prev_bg)[ [◆](bg:purple fg:bright-purple bold) $workspace](bg:icon_bg fg:purple bold inverted)[](fg:purple) '
+
+[python]
+symbol = "py"
+style = "bg:text_bg fg:text_fg"
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:green bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](bg:green fg:prev_bg)[ [◆](bg:green fg:bright-green bold)( $virtualenv)](bg:icon_bg fg:green bold inverted)[](fg:green) '
+
+[rust]
+symbol = "rs"
+style = "bg:text_bg fg:text_fg"
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:orange bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
+
+[lua]
+symbol = "lua"
+style = "bg:text_bg fg:text_fg"
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:blue bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
+
+[golang]
+symbol = "go"
+style = "bg:text_bg fg:text_fg"
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:blue bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
+
+[ruby]
+symbol = "rb"
+style = "bg:text_bg fg:text_fg"
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:red bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
+
+[java]
+symbol = "java"
+style = "bg:text_bg fg:text_fg"
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:red bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
+
+[kubernetes]
+disabled = false
+detect_files = ['helmfile.yaml', 'Chart.yaml', 'chart.yaml', 'config']
+symbol = "k8s"
+style = "bg:text_bg fg:text_fg"
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:blue bold)[([](bg:text_bg fg:icon_bg) $context)]($style)[](bg:blue fg:prev_bg)[ [◆](bg:blue fg:bright-blue bold)( $namespace)](bg:icon_bg fg:blue bold inverted)[](fg:blue) '
+
+[helm]
+disabled = false
+detect_files = ['helmfile.yaml', 'Chart.yaml', 'chart.yaml']
+symbol = "helm"
+style = "bg:text_bg fg:text_fg"
+format = '[](fg:icon_bg)[$symbol](bg:icon_bg fg:bright-blue bold)[([](bg:text_bg fg:icon_bg) $version)]($style)[](fg:prev_bg) '
+
+[package]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[bun]
+disabled = true
+
+[deno]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[azure]
+disabled = true
